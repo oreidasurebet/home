@@ -135,6 +135,13 @@ button#btnCalcular:hover {
     transition: background-color 0.3s ease;
     width: 40vw;
 }
+  .calc-title {
+    font-weight: 700;
+    font-size: 2vh;
+    margin-bottom: 2vh;
+    color: #d4af37;
+    justify-content: center;
+}
   button#btnCalcular {
     display: block;
     margin: 0 auto 4vh auto;
@@ -143,8 +150,15 @@ button#btnCalcular:hover {
     color: #000;
     font-weight: 700;
     font-size: 2.5vh;
-    padding: 2vh 5vw;
+    padding: 1.5vh 1.5vh;
     border-radius: 3vh;
     transition: background 0.3s ease;
 }
+  h1 {
+    text-align: center;
+    margin-bottom: 4vh;
+    color: #d4af37;
+    font-size: 3vh;
+}
+  
 }
