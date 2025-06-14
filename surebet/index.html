@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Rei da Surebet - Calculadora Surebet e Skewed Mais Poderosa do Mundo</title>
+
+  <!-- SEO -->
+  <meta name="description" content="A calculadora de Surebet e Skewed mais completa e poderosa do mundo. Maximize seus lucros e minimize seus riscos nas apostas esportivas. Ferramenta indispensável para apostadores profissionais.">
+  <meta name="keywords" content="calculadora surebet, calculadora skewed, calculadora de apostas, apostas esportivas, surebet, skewed betting, scanner surebet, rei da surebet, calculadora profissional apostas, surebet calculator, skewed calculator">
+  <meta name="author" content="O Rei da Surebet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="istyle.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="imagens/logo.png" alt="Logo O Rei da Surebet">
+    </div>
+
+    <div class="menu">
+      <button class="menu-button">☰ Menu</button>
+      <div class="dropdown">
+        <strong>CALCULADORAS</strong>
+        <a href="#surebet">Calculadora de Surebet</a>
+        <a href="#trade">Calculadora de Trade</a>
+        <strong>FERRAMENTAS</strong>
+        <a href="#scanner">Extensão Scanner</a>
+        <a href="#limite">Extensão Limite de Aposta</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="inputs">
+      <label>Banca (R$):
+        <input type="number" id="banca" min="1" step="any" placeholder="Ex: 1000" />
+      </label>
+      <label>Odd Casa:
+        <input type="number" id="casaOdd" min="1" step="any" placeholder="Ex: 3.46" />
+      </label>
+      <label>Odd Empate:
+        <input type="number" id="empateOdd" min="1" step="any" placeholder="Ex: 3.19" />
+      </label>
+      <label>Odd Visitante:
+        <input type="number" id="visitanteOdd" min="1" step="any" placeholder="Ex: 2.65" />
+      </label>
+    </div>
+
+    <button id="btnCalcular">Calcular</button>
+
+    <div class="calculadoras-grid">
+      <!-- Surebet padrão -->
+      <div class="calculadora">
+        <div class="calc-title">Surebet <span id="porcentagemSurebet"></span></div>
+        <pre class="resultado" id="surebet"></pre>
+      </div>
+
+      <!-- Skewed com lucro total em cada resultado -->
+      <div class="calculadora">
+        <div class="calc-title">Skewed (Lucro total na Casa) <span id="porcentagemCasa"></span></div>
+        <pre class="resultado" id="skewedCasa"></pre>
+      </div>
+      <div class="calculadora">
+        <div class="calc-title">Skewed (Lucro total no Empate) <span id="porcentagemEmpate"></span></div>
+        <pre class="resultado" id="skewedEmpate"></pre>
+      </div>
+      <div class="calculadora">
+        <div class="calc-title">Skewed (Lucro total no Visitante) <span id="porcentagemVisitante"></span></div>
+        <pre class="resultado" id="skewedVisitante"></pre>
+      </div>
+
+      <!-- Novas calculadoras "Contra" -->
+      <div class="calculadora">
+        <div class="calc-title">Contra Casa (Casa zerada) <span id="porcentagemContraCasa"></span></div>
+        <pre class="resultado" id="contraCasa"></pre>
+      </div>
+      <div class="calculadora">
+        <div class="calc-title">Contra Empate (Empate zerado) <span id="porcentagemContraEmpate"></span></div>
+        <pre class="resultado" id="contraEmpate"></pre>
+      </div>
+      <div class="calculadora">
+        <div class="calc-title">Contra Visitante (Visitante zerado) <span id="porcentagemContraVisitante"></span></div>
+        <pre class="resultado" id="contraVisitante"></pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Trade no Empate - O Rei da Surebet</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Calculadora de Trade no Empate mais completa. Controle lucro e prejuízo, faça entrada no empate ao vivo e maximize ganhos, ideal para promoções como 2 gols de vantagem. Ferramenta essencial para apostadores profissionais.">
+  <meta name="keywords" content="calculadora trade empate, trade no empate, calculadora apostas, apostas esportivas, 2 gols de vantagem, encerramento aposta, rei da surebet, calculadora de aposta ao vivo, controlar prejuízo, maximizar lucro apostas">
+  <meta name="author" content="O Rei da Surebet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="istyle.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="https://oreidasurebet.com" target="_blank">
+        <img src="imagens/logo.png" alt="O Rei da Surebet">
+      </a>
+    </div>
+
+    <div class="menu">
+      <button class="menu-button">☰ Menu</button>
+      <div class="dropdown">
+        <strong>CALCULADORAS</strong>
+        <a href="#surebet">Calculadora de Surebet e Skewed</a>
+        <a href="#trade">Calculadora Trade no Empate</a>
+        <strong>FERRAMENTAS</strong>
+        <a href="#scanner">Extensão Scanner</a>
+        <a href="#limite">Extensão Limite de Aposta</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Calculadora para Trade no Empate</h1>
+    <div class="calculadora">
+      <div class="calc-title">Preencha os campos abaixo</div>
+      <div class="inputs">
+        <label>Banca Total (R$)
+          <input type="number" id="banca" placeholder="Ex: 500" step="0.01" />
+        </label>
+        <label>Reserva (%) da banca (aplicada só em A e B)
+          <input type="number" id="reservaPorcentagem" value="20" step="1" min="0" max="100" />
+        </label>
+        <label>Lucro Desejado (R$)
+          <input type="number" id="lucro" placeholder="Ex: 50" step="0.01" />
+        </label>
+        <label>Prejuízo Máximo (R$)
+          <input type="number" id="prejuizo" placeholder="Ex: 100" step="0.01" />
+        </label>
+        <label>Odd Time A
+          <input type="number" id="oddA" placeholder="Ex: 5.50" step="0.01" />
+        </label>
+        <label>Odd Time B
+          <input type="number" id="oddB" placeholder="Ex: 1.70" step="0.01" />
+        </label>
+      </div>
+      <button id="btnCalcular" onclick="calcularSurebet()">Calcular</button>
+      <div class="resultado" id="resultado"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
