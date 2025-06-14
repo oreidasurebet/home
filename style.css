@@ -116,13 +116,13 @@
       
     .logo img {
     height: 80%;
-    max-height: 4vh;
+    max-height: 6vh;
 }
    .menu-button {
     background: none;
     border: none;
     color: #fff;
-    font-size: 2vh;
+    font-size: 3vh;
     cursor: pointer;
     color: #cfa749;
 } 
