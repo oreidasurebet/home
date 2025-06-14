@@ -77,8 +77,8 @@ button#btnCalcular:hover {
   grid-column: span 1;
 }
 
-/* A partir de telas maiores (tablet e desktop) */
-@media (min-width: 70vh) {
+
+@media (max-width: 768px) {
   .calculadoras-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -98,7 +98,7 @@ button#btnCalcular:hover {
 
 .calc-title {
   font-weight: 700;
-  font-size: 2.5vmin;
+  font-size: 2.5vh;
   margin-bottom: 2vh;
   color: #d4af37;
   justify-content: center;
@@ -117,8 +117,6 @@ button#btnCalcular:hover {
   user-select: text;
   text-align: center;
 }
-
-@media (max-width: 768px) {
   .container {
     max-width: 90vw;
     margin: 0 auto;
