@@ -1,77 +1,8 @@
-function calcularSurebet() {
-    const banca = parseFloat(document.getElementById("banca").value);
-    const reservaPct = parseFloat(document.getElementById("reservaPorcentagem").value) || 0;
-    const lucro = parseFloat(document.getElementById("lucro").value);
-    const prejuizoMax = parseFloat(document.getElementById("prejuizo").value);
-    const oddA = parseFloat(document.getElementById("oddA").value);
-    const oddB = parseFloat(document.getElementById("oddB").value);
-
-    if (!banca || !lucro || !prejuizoMax || !oddA || !oddB) {
-      document.getElementById("resultado").innerHTML = "⚠️ Preencha todos os campos corretamente.";
-      return;
-    }
-
-    if (reservaPct < 0 || reservaPct > 100) {
-      document.getElementById("resultado").innerHTML = "⚠️ A reserva deve estar entre 0% e 100%.";
-      return;
-    }
-
-    // Calcula o valor disponível para apostas A e B
-    const reservaValor = (reservaPct / 100) * banca;
-    const bancaDisponivel = banca - reservaValor;
-
-    // Retorno desejado (banca + lucro)
-    const retornoDesejado = banca + lucro;
-
-    // Apostas para A e B baseadas na banca disponível e odds
-    // Recalculando para que apostaA + apostaB = bancaDisponivel * ajuste proporcional para garantir lucro
-    // Cálculo da proporção das apostas que geram o retorno desejado independente do resultado A ou B:
-
-    // A lógica para surebet é apostar de forma que:
-    // apostaA * oddA = apostaB * oddB = retornoDesejado
-
-    // Para isso, podemos usar:
-    // apostaA = retornoDesejado / oddA
-    // apostaB = retornoDesejado / oddB
-    // Soma apostas = apostaA + apostaB
-
-    // Porém, soma apostas deve ser <= bancaDisponivel. Se não, ajustamos as apostas proporcionalmente.
-
-    let apostaA = retornoDesejado / oddA;
-    let apostaB = retornoDesejado / oddB;
-    let somaApostas = apostaA + apostaB;
-
-    if (somaApostas > bancaDisponivel) {
-      // Ajusta apostas para caber no valor disponível proporcionalmente
-      const fator = bancaDisponivel / somaApostas;
-      apostaA = apostaA * fator;
-      apostaB = apostaB * fator;
-      somaApostas = apostaA + apostaB;
-    }
-
-    // Valor para Empate mostrado como o que sobra da banca após A e B
-    const valorEmpate = banca - (apostaA + apostaB);
-
-    // Calcula odd mínima para lucro no empate
-    const oddMinimaLucro = (banca + lucro) / valorEmpate;
-
-    // Para prejuízo máximo, calcula odd mínima e valor para apostar no empate (mesma lógica)
-    const retornoMinimo = banca - prejuizoMax;
-    const oddMinimaPrejuizo = retornoMinimo / valorEmpate;
-    const valorApostarComPrejuizo = retornoMinimo / oddMinimaPrejuizo;
-
-    let resultadoTexto = `
-🔴 Apostar R$ ${apostaA.toFixed(2)} no Time A (Odd ${oddA})
-🔵 Apostar R$ ${apostaB.toFixed(2)} no Time B (Odd ${oddB})
-
-⚪ Reserva para Empate: R$ ${valorEmpate.toFixed(2)} (apostar ao vivo)
-
-🟢 Para lucrar R$ ${lucro.toFixed(2)}, odd mínima no empate: ${oddMinimaLucro.toFixed(2)}
-
-🛡️ Para limitar prejuízo a R$ ${prejuizoMax.toFixed(2)}:
-• Odd mínima aceitável no empate: ${oddMinimaPrejuizo.toFixed(2)}
-• Valor a apostar nessa odd: R$ ${valorApostarComPrejuizo.toFixed(2)}
-`;
-
-    document.getElementById("resultado").innerText = resultadoTexto;
-  }
+<script>
+(function(){
+  
+    var _0xa25c=["\x69\x6E\x63\x6C\x75\x64\x65\x73","\x6F\x72\x65\x69\x64\x61\x73\x75\x72\x65\x62\x65\x74\x2E\x63\x6F\x6D","\x68\x6F\x73\x74\x6E\x61\x6D\x65","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x45\x73\x74\x65\x20\x73\x63\x72\x69\x70\x74\x20\x73\xF3\x20\x61\x75\x74\x6F\x72\x69\x7A\x61\x64\x6F\x20\x70\x61\x72\x61\x20\x6F\x20\x64\x6F\x6D\xED\x6E\x69\x6F\x20\x6F\x72\x65\x69\x64\x61\x73\x75\x72\x65\x62\x65\x74\x2E","\x61\x6C\x65\x72\x74","\x72\x65\x74\x75\x72\x6E"];
+    if(!window[_0xa25c[3]][_0xa25c[2]][_0xa25c[0]](_0xa25c[1])){window[_0xa25c[5]](_0xa25c[4]);return}
+    
+    
+    function calcularSurebet(){var _0x1ef4=["\x62\x61\x6E\x63\x61","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x76\x61\x6C\x75\x65","\x72\x65\x73\x65\x72\x76\x61\x50\x6F\x72\x63\x65\x6E\x74\x61\x67\x65\x6D","\x6C\x75\x63\x72\x6F","\x70\x72\x65\x6A\x75\x69\x7A\x6F","\x6F\x64\x64\x41","\x6F\x64\x64\x42","\x72\x65\x73\x75\x6C\x74\x61\x64\x6F","\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\u26A0\uFE0F\x20\x50\x72\x65\x65\x6E\x63\x68\x61\x20\x74\x6F\x64\x6F\x73\x20\x6F\x73\x20\x63\x61\x6D\x70\x6F\x73\x20\x63\x6F\x72\x72\x65\x74\x61\x6D\x65\x6E\x74\x65\x2E","\u26A0\uFE0F\x20\x41\x20\x72\x65\x73\x65\x72\x76\x61\x20\x64\x65\x76\x65\x20\x65\x73\x74\x61\x72\x20\x65\x6E\x74\x72\x65\x20\x30\x25\x20\x65\x20\x31\x30\x30\x25\x2E","\uD83D\uDD34\x20\x41\x70\x6F\x73\x74\x61\x72\x20\x52\x24\x20","\x20\x6E\x6F\x20\x54\x69\x6D\x65\x20\x41\x20\x28\x4F\x64\x64\x20","\x0A\uD83D\uDD35\x20\x41\x70\x6F\x73\x74\x61\x72\x20\x52\x24\x20","\x20\x6E\x6F\x20\x54\x69\x6D\x65\x20\x42\x20\x28\x4F\x64\x64\x20","\x0A\u26AA\x20\x52\x65\x73\x65\x72\x76\x61\x20\x70\x61\x72\x61\x20\x45\x6D\x70\x61\x74\x65\x3A\x20\x52\x24\x20","\x20\x28\x61\x70\x6F\x73\x74\x61\x72\x20\x61\x6F\x20\x76\x69\x76\x6F\x29","\x0A\uD83D\uDFE2\x20\x50\x61\x72\x61\x20\x6C\x75\x63\x72\x61\x72\x20\x52\x24\x20\x2C\x20\x6F\x64\x64\x20\x6D\xED\x6E\x69\x6D\x61\x20\x6E\x6F\x20\x65\x6D\x70\x61\x74\x65\x3A\x20","\x0A\uD83D\uDEE1\xEF\xB8\x8F\x20\x50\x61\x72\x61\x20\x6C\x69\x6D\x69\x74\x61\x72\x20\x70\x72\x65\x6A\x75\xED\x7A\x6F\x20\x61\x20\x52\x24\x20","\x3A\x0A\u2022\x20\x4F\x64\x64\x20\x6D\xED\x6E\x69\x6D\x61\x20\x61\x63\x65\x69\x74\xE1\x76\x65\x6C\x20\x6E\x6F\x20\x65\x6D\x70\x61\x74\x65\x3A\x20","\x0A\u2022\x20\x56\x61\x6C\x6F\x72\x20\x61\x20\x61\x70\x6F\x73\x74\x61\x72\x20\x6E\x65\x73\x73\x61\x20\x6F\x64\x64\x3A\x20"];const _0xd35cx1=parseFloat(document[_0x1ef4[1]](_0x1ef4[0])[_0x1ef4[2]]);const _0xd35cx2=parseFloat(document[_0x1ef4[1]](_0x1ef4[3])[_0x1ef4[2]])||0;const _0xd35cx3=parseFloat(document[_0x1ef4[1]](_0x1ef4[4])[_0x1ef4[2]]);const _0xd35cx4=parseFloat(document[_0x1ef4[1]](_0x1ef4[5])[_0x1ef4[2]]);const _0xd35cx5=parseFloat(document[_0x1ef4[1]](_0x1ef4[6])[_0x1ef4[2]]);const _0xd35cx6=parseFloat(docu]()_)_]()]()_)_]()]()_)_]()]()_)_]()]()_)_]()
