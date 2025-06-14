@@ -1,3 +1,18 @@
+(function() {
+  const dominioPermitido = 'oreidasurebet.com';
+  if (window.location.hostname.endsWith(dominioPermitido)) {
+    document.getElementById('btnCalcular').addEventListener('click', calcular);
+    function calcular() {
+      // ...seu código inteiro aqui...
+    }
+  } else {
+    document.body.innerHTML = '<h1 style="color:red;text-align:center;margin-top:20%;">Acesso não autorizado!</h1>';
+    console.warn('Script bloqueado: domínio não autorizado.');
+    throw new Error('Script bloqueado: domínio não autorizado.');
+  }
+})();
+
+
 document.getElementById('btnCalcular').addEventListener('click', calcular);
 
 function calcular() {
