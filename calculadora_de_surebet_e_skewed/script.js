@@ -1,1 +1,129 @@
-document.getElementById('btnCalcular').addEventListener('click',calcular);function calcular(){const b=parseFloat(document.getElementById('banca').value),c=parseFloat(document.getElementById('casaOdd').value),e=parseFloat(document.getElementById('empateOdd').value),v=parseFloat(document.getElementById('visitanteOdd').value),o=[];!isNaN(c)&&c>0&&o.push({nome:'Casa',valor:c}),!isNaN(e)&&e>0&&o.push({nome:'Empate',valor:e}),!isNaN(v)&&v>0&&o.push({nome:'Visitante',valor:v});if(isNaN(b)||b<=0||o.length<2)return alert('Informe a banca e pelo menos duas odds válidas maiores que zero.'),void 0;const s=o.reduce((a,d)=>a+1/d.valor,0),l=100*(1-s),r=b*l/100;let t='';for(let a of o){const d=b/(a.valor*s);t+=`${a.nome}: R$${d.toFixed(2)}\n`}t+=`Lucro garantido: R$${r.toFixed(2)}`,document.getElementById('surebet').innerText=t,document.getElementById('porcentagemSurebet').innerText=l>0?`(${l.toFixed(2)}%)`:'(Sem Surebet)';function n(a,d,i){const u=d.filter((_,f)=>f!==i),p=u.map(h=>a/h.valor),m=p.reduce((h,g)=>h+g,0),y=a-m,P=y*d[i].valor-a;return{apostas:d.map((h,g)=>g===i?y:p.shift()),lucro:P,lucroPercent:P/a*100}}o.forEach((a,d)=>{const i=n(b,o,d),u=o.map((h,g)=>`${h.nome}: R$${i.apostas[g].toFixed(2)}`).join('\n')+`\nLucro se ${a.nome} vencer: R$${i.lucro.toFixed(2)}`;document.getElementById(`skewed${a.nome}`).innerText=u,document.getElementById(`porcentagem${a.nome}`).innerText=`(${i.lucroPercent.toFixed(2)}%)`}),['Casa','Empate','Visitante'].forEach(a=>{o.find(h=>h.nome===a)||(document.getElementById(`skewed${a}`).innerText='',document.getElementById(`porcentagem${a}`).innerText='')});if(3===o.length){const[a,d,i]=[c,e,v],u=b/a,p=b-u,m=1/d+1/i,y=p*(1/d)/m,P=p-y,g=y*d,v=P*i,E=Math.min(g,v)-b;document.getElementById('contraCasa').innerText=`Casa (zerada): R$${u.toFixed(2)}\nEmpate: R$${y.toFixed(2)}\nVisitante: R$${P.toFixed(2)}\nLucro mínimo se Casa perder: R$${E.toFixed(2)}`,document.getElementById('porcentagemContraCasa').innerText=`(${(E/b*100).toFixed(2)}%)`;const C=b/d,x=b-C,T=1/a+1/i,k=x*(1/a)/T,B=x-k,_=k*a,S=B*i,M=Math.min(_,S)-b;document.getElementById('contraEmpate').innerText=`Empate (zerado): R$${C.toFixed(2)}\nCasa: R$${k.toFixed(2)}\nVisitante: R$${B.toFixed(2)}\nLucro mínimo se Empate perder: R$${M.toFixed(2)}`,document.getElementById('porcentagemContraEmpate').innerText=`(${(M/b*100).toFixed(2)}%)`;const N=b/i,O=b-N,q=1/a+1/d,z=O*(1/a)/q,A=O-z,L=z*a,D=A*d,Z=Math.min(L,D)-b;document.getElementById('contraVisitante').innerText=`Visitante (zerado): R$${N.toFixed(2)}\nCasa: R$${z.toFixed(2)}\nEmpate: R$${A.toFixed(2)}\nLucro mínimo se Visitante perder: R$${Z.toFixed(2)}`,document.getElementById('porcentagemContraVisitante').innerText=`(${(Z/b*100).toFixed(2)}%)`}else['contraCasa','contraEmpate','contraVisitante','porcentagemContraCasa','porcentagemContraEmpate','porcentagemContraVisitante'].forEach(a=>document.getElementById(a).innerText='')}
+document.getElementById('btnCalcular').addEventListener('click', calcular);
+
+function calcular() {
+  const banca = parseFloat(document.getElementById('banca').value);
+  const casaOdd = parseFloat(document.getElementById('casaOdd').value);
+  const empateOdd = parseFloat(document.getElementById('empateOdd').value);
+  const visitanteOdd = parseFloat(document.getElementById('visitanteOdd').value);
+
+  const odds = [];
+
+  if (!isNaN(casaOdd) && casaOdd > 0) odds.push({ nome: 'Casa', valor: casaOdd });
+  if (!isNaN(empateOdd) && empateOdd > 0) odds.push({ nome: 'Empate', valor: empateOdd });
+  if (!isNaN(visitanteOdd) && visitanteOdd > 0) odds.push({ nome: 'Visitante', valor: visitanteOdd });
+
+  if (isNaN(banca) || banca <= 0 || odds.length < 2) {
+    alert("Informe a banca e pelo menos duas odds válidas maiores que zero.");
+    return;
+  }
+
+  // Calcular Surebet
+  const somaInversos = odds.reduce((acc, odd) => acc + (1 / odd.valor), 0);
+  const lucroSurebetPercent = (1 - somaInversos) * 100;
+  const lucroSurebetValor = banca * lucroSurebetPercent / 100;
+
+  let resultadoSurebet = '';
+  for (let odd of odds) {
+    const aposta = banca / (odd.valor * somaInversos);
+    resultadoSurebet += `${odd.nome}: R$${aposta.toFixed(2)}\n`;
+  }
+  resultadoSurebet += `Lucro garantido: R$${lucroSurebetValor.toFixed(2)}`;
+
+  document.getElementById('surebet').innerText = resultadoSurebet;
+  document.getElementById('porcentagemSurebet').innerText =
+    lucroSurebetPercent > 0 ? `(${lucroSurebetPercent.toFixed(2)}%)` : '(Sem Surebet)';
+
+  // Calcular Skewed para 2 ou 3 odds
+  function skewed(banca, odds, favorecido) {
+    const outrasOdds = odds.filter((_, i) => i !== favorecido);
+    const apostasOutras = outrasOdds.map(o => banca / o.valor);
+    const totalOutras = apostasOutras.reduce((acc, val) => acc + val, 0);
+    const apostaFav = banca - totalOutras;
+    const lucro = apostaFav * odds[favorecido].valor - banca;
+    return {
+      apostas: odds.map((_, i) =>
+        i === favorecido ? apostaFav : apostasOutras.shift()
+      ),
+      lucro,
+      lucroPercent: (lucro / banca) * 100,
+    };
+  }
+
+  odds.forEach((odd, i) => {
+    const skew = skewed(banca, odds, i);
+    const txt = odds.map((o, j) =>
+      `${o.nome}: R$${skew.apostas[j].toFixed(2)}`
+    ).join('\n') + `\nLucro se ${odd.nome} vencer: R$${skew.lucro.toFixed(2)}`;
+
+    document.getElementById(`skewed${odd.nome}`).innerText = txt;
+    document.getElementById(`porcentagem${odd.nome}`).innerText = `(${skew.lucroPercent.toFixed(2)}%)`;
+  });
+
+  ['Casa', 'Empate', 'Visitante'].forEach(nome => {
+    if (!odds.find(o => o.nome === nome)) {
+      document.getElementById(`skewed${nome}`).innerText = '';
+      document.getElementById(`porcentagem${nome}`).innerText = '';
+    }
+  });
+
+  // Calcular Contra apenas se tiver 3 odds
+  if (odds.length === 3) {
+    const [c, e, v] = [casaOdd, empateOdd, visitanteOdd];
+
+    // Contra Casa
+    const apostaCasaZerada = banca / c;
+    const restanteCE = banca - apostaCasaZerada;
+    const somaInvCE = (1 / e) + (1 / v);
+    const apostaEmpateCC = (restanteCE * (1 / e)) / somaInvCE;
+    const apostaVisitanteCC = restanteCE - apostaEmpateCC;
+    const retornoEmpateCC = apostaEmpateCC * e;
+    const retornoVisitanteCC = apostaVisitanteCC * v;
+    const lucroContraCasa = Math.min(retornoEmpateCC, retornoVisitanteCC) - banca;
+
+    document.getElementById('contraCasa').innerText =
+      `Casa (zerada): R$${apostaCasaZerada.toFixed(2)}\n` +
+      `Empate: R$${apostaEmpateCC.toFixed(2)}\n` +
+      `Visitante: R$${apostaVisitanteCC.toFixed(2)}\n` +
+      `Lucro mínimo se Casa perder: R$${lucroContraCasa.toFixed(2)}`;
+    document.getElementById('porcentagemContraCasa').innerText = `(${(lucroContraCasa / banca * 100).toFixed(2)}%)`;
+
+    // Contra Empate
+    const apostaEmpateZerada = banca / e;
+    const restanteCV = banca - apostaEmpateZerada;
+    const somaInvCV = (1 / c) + (1 / v);
+    const apostaCasaCE = (restanteCV * (1 / c)) / somaInvCV;
+    const apostaVisitanteCE = restanteCV - apostaCasaCE;
+    const retornoCasaCE = apostaCasaCE * c;
+    const retornoVisitanteCE = apostaVisitanteCE * v;
+    const lucroContraEmpate = Math.min(retornoCasaCE, retornoVisitanteCE) - banca;
+
+    document.getElementById('contraEmpate').innerText =
+      `Empate (zerado): R$${apostaEmpateZerada.toFixed(2)}\n` +
+      `Casa: R$${apostaCasaCE.toFixed(2)}\n` +
+      `Visitante: R$${apostaVisitanteCE.toFixed(2)}\n` +
+      `Lucro mínimo se Empate perder: R$${lucroContraEmpate.toFixed(2)}`;
+    document.getElementById('porcentagemContraEmpate').innerText = `(${(lucroContraEmpate / banca * 100).toFixed(2)}%)`;
+
+    // Contra Visitante
+    const apostaVisitanteZerada = banca / v;
+    const restanteCE2 = banca - apostaVisitanteZerada;
+    const somaInvCE2 = (1 / c) + (1 / e);
+    const apostaCasaCV = (restanteCE2 * (1 / c)) / somaInvCE2;
+    const apostaEmpateCV = restanteCE2 - apostaCasaCV;
+    const retornoCasaCV = apostaCasaCV * c;
+    const retornoEmpateCV = apostaEmpateCV * e;
+    const lucroContraVisitante = Math.min(retornoCasaCV, retornoEmpateCV) - banca;
+
+    document.getElementById('contraVisitante').innerText =
+      `Visitante (zerado): R$${apostaVisitanteZerada.toFixed(2)}\n` +
+      `Casa: R$${apostaCasaCV.toFixed(2)}\n` +
+      `Empate: R$${apostaEmpateCV.toFixed(2)}\n` +
+      `Lucro mínimo se Visitante perder: R$${lucroContraVisitante.toFixed(2)}`;
+    document.getElementById('porcentagemContraVisitante').innerText = `(${(lucroContraVisitante / banca * 100).toFixed(2)}%)`;
+  } else {
+    // Limpar campos contra se menos de 3 odds
+    ['contraCasa', 'contraEmpate', 'contraVisitante',
+     'porcentagemContraCasa', 'porcentagemContraEmpate', 'porcentagemContraVisitante']
+      .forEach(id => document.getElementById(id).innerText = '');
+  }
+}
