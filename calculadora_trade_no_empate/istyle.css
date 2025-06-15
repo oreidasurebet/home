@@ -165,4 +165,8 @@ h1 {
     border-radius: 3vh;
     transition: background 0.3s ease;
 }
+  .resultado .icone {
+  width: 2vh;                 /* largura fixa para alinhar colunas de texto */
+  flex: 0 0 3vh;
+  margin-top: 1vh;
 }
