@@ -89,7 +89,7 @@ button#btnCalcular:hover {
   font-size: 2.5vh;
   min-height: 10vh;
   user-select: text;
-  text-align: center;
+  text-align: left;
 }
 
 .resultado .linha {
