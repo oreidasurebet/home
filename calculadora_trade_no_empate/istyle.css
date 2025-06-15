@@ -133,16 +133,15 @@ h1 {
   transition: background-color 0.3s ease;
 }
   button#btnCalcular {
-  display: block;
-  margin: 0 auto 4vh auto;
-  background: linear-gradient(90deg, #d4af37, #f9d976);
-  border: none;
-  color: #000;
-  font-weight: 700;
-  font-size: 2vh;
-  padding: 2vh 10vh;
-  border-radius: 5vh;
-  cursor: pointer;
-  transition: background 0.3s ease;
+    display: block;
+    margin: 0 auto 4vh auto;
+    background: linear-gradient(90deg, #d4af37, #f9d976);
+    border: none;
+    color: #000;
+    font-weight: 700;
+    font-size: 2.5vh;
+    padding: 1.5vh 10vh;
+    border-radius: 3vh;
+    transition: background 0.3s ease;
 }
 }
