@@ -120,6 +120,18 @@ h1 {
   color: #d4af37;
   min-width: 15vh;
 }
+  .inputs input {
+  margin-top: 1vh;
+  padding: 1.5vh 2vw;
+  border: none;
+  border-radius: 1vh;
+  font-size: 2vh;
+  font-weight: 500;
+  outline: none;
+  background-color: #222;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
   button#btnCalcular {
   display: block;
   margin: 0 auto 4vh auto;
