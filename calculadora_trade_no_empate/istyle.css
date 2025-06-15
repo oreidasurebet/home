@@ -168,5 +168,5 @@ h1 {
   .resultado .icone {
   width: 2vh;                 /* largura fixa para alinhar colunas de texto */
   flex: 0 0 3vh;
-  margin-top: 1vh;
+  margin-top: -1vh;
 }
