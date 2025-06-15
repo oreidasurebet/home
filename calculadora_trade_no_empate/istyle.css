@@ -78,12 +78,14 @@ button#btnCalcular:hover {
     color: #d4af37;
 }
 
+/* ... estilos existentes omitidos ... */
+
 .resultado {
   font-family: 'Courier New', Courier, monospace;
   background-color: #222;
   border-radius: 2vh;
   padding: 2vh 3vw;
-  color: #34d399;
+  color: #34d399;             /* texto verde */
   white-space: pre-line;
   font-weight: 600;
   font-size: 2.5vh;
@@ -91,6 +93,25 @@ button#btnCalcular:hover {
   user-select: text;
   text-align: center;
 }
+
+.resultado .linha {
+  display: flex;
+  align-items: center;        /* alinha verticalmente ícone e texto */
+  gap: 1vmin;                 /* espaçamento horizontal entre ícone e texto */
+  margin-bottom: 1vh;         /* espaçamento vertical entre linhas */
+}
+
+.resultado .icone {
+  width: 3vh;                 /* largura fixa para alinhar colunas de texto */
+  flex: 0 0 3vh;              /* não expande ou contrai, mantém largura fixa */
+  /* ícone (emoji) mantém sua cor própria (🔴🔵⚪🟢 etc.) */
+}
+
+.resultado .texto {
+  flex: 1;                    /* permite ao texto ocupar todo o espaço restante da linha */
+  /* herda fonte Courier, cor verde (#34d399) do .resultado */
+}
+
 
 @media (max-width: 768px) {
 
