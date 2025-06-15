@@ -101,7 +101,7 @@ button#btnCalcular:hover {
 
 .resultado .icone {
   width: 3vh;
-  flex: 0 0 3vh;
+  flex: 0 0 1vh;
 }
 
 .resultado .texto {
