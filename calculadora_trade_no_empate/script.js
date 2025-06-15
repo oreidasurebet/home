@@ -1,1 +1,51 @@
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('1c 1b(){1 5=c(4.3("5").b);1 l=c(4.3("1a").b)||0;1 9=c(4.3("9").b);1 h=c(4.3("19").b);1 f=c(4.3("f").b);1 d=c(4.3("d").b);t(!5||!9||!h||!f||!d){4.3("n").K="⚠️ 18 17 16 15 14.";J}t(l<0||l>v){4.3("n").K="⚠️ A 13 12 11 10 0% e v%.";J}1 I=(l/v)*5;1 s=5-I;1 u=5+9;j 8=u/f;j 7=u/d;j k=8+7;t(k>s){1 r=s/k;8=8*r;7=7*r;k=8+7}1 i=5-(8+7);1 F=(5+9)/i;1 q=5-h;1 o=q/i;1 x=q/o;j w=`🔴H R$ ${8.6(2)}g G A(p ${f})🔵H R$ ${7.6(2)}g G B(p ${d})⚪Z Y X:R$ ${i.6(2)}(z W V)🟢E U R$ ${9.6(2)},y míD g C:${F.6(2)}🛡️E T SíQ a R$ ${h.6(2)}:•p míD PáO g C:${o.6(2)}•N a z M y:R$ ${x.6(2)}`;4.3("n").L=w}',62,75,'|const||getElementById|document|banca|toFixed|apostaB|apostaA|lucro||value|parseFloat|oddB||oddA|no|prejuizoMax|valorEmpate|let|somaApostas|reservaPct||resultado|oddMinimaPrejuizo|Odd|retornoMinimo|fator|bancaDisponivel|if|retornoDesejado|100|resultadoTexto|valorApostarComPrejuizo|odd|apostar|||empate|nima|Para|oddMinimaLucro|Time|Apostar|reservaValor|return|innerHTML|innerText|nessa|Valor|vel|aceit|zo||preju|limitar|lucrar|vivo|ao|Empate|para|Reserva|entre|estar|deve|reserva|corretamente|campos|os|todos|Preencha|prejuizo|reservaPorcentagem|calcularSurebet|function'.split('|'),0,{}))
+function calcularSurebet() {
+  const banca = parseFloat(document.getElementById("banca").value);
+  const reservaPorcentagem = parseFloat(document.getElementById("reservaPorcentagem").value) || 0;
+  const lucro = parseFloat(document.getElementById("lucro").value);
+  const oddA = parseFloat(document.getElementById("oddA").value);
+  const oddB = parseFloat(document.getElementById("oddB").value);
+  const prejuizoMax = parseFloat(document.getElementById("prejuizoMax").value);
+
+  if (!banca || !lucro || !oddA || !oddB || !prejuizoMax) {
+    document.getElementById("resultado").innerText = "⚠️ Preencha todos os campos corretamente.";
+    return;
+  }
+
+  if (reservaPorcentagem < 0 || reservaPorcentagem > 100) {
+    document.getElementById("resultado").innerText = "⚠️ A reserva deve estar entre 0% e 100%.";
+    return;
+  }
+
+  const reservaValor = (reservaPorcentagem / 100) * banca;
+  const bancaDisponivel = banca - reservaValor;
+  const retornoDesejado = banca + lucro;
+
+  let apostaA = retornoDesejado / oddA;
+  let apostaB = retornoDesejado / oddB;
+  let somaApostas = apostaA + apostaB;
+
+  if (somaApostas > bancaDisponivel) {
+    const fator = bancaDisponivel / somaApostas;
+    apostaA = apostaA * fator;
+    apostaB = apostaB * fator;
+    somaApostas = apostaA + apostaB;
+  }
+
+  const valorEmpate = banca - (apostaA + apostaB);
+  const oddMinimaLucro = (banca + lucro) / valorEmpate;
+
+  const valorApostarComPrejuizo = banca - prejuizoMax;
+  const oddMinimaPrejuizo = valorApostarComPrejuizo / valorEmpate;
+  const valorNaOddPrejuizo = valorEmpate;
+
+  const resultadoTexto = 
+`🔴 Apostar R$ ${apostaA.toFixed(2)} no Time A (Odd ${oddA})
+🔵 Apostar R$ ${apostaB.toFixed(2)} no Time B (Odd ${oddB})
+⚪ Reserva para Empate: R$ ${valorEmpate.toFixed(2)} (apostar ao vivo)
+🟢 Para lucrar R$ ${lucro.toFixed(2)}, odd mínima no empate: ${oddMinimaLucro.toFixed(2)}
+🛡️ Para limitar prejuízo a R$ ${prejuizoMax.toFixed(2)}:
+• Odd mínima aceitável no empate: ${oddMinimaPrejuizo.toFixed(2)}
+• Valor a apostar nessa odd: R$ ${valorNaOddPrejuizo.toFixed(2)}`;
+
+  document.getElementById("resultado").innerText = resultadoTexto;
+}
