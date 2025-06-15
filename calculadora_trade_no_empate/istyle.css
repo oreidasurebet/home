@@ -106,7 +106,6 @@ button#btnCalcular:hover {
 
 .resultado .texto {
   flex: 1;
-  margin-left:1h;
 }
 
 @media (max-width: 768px) {
