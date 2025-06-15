@@ -72,20 +72,18 @@ button#btnCalcular:hover {
 }
 
 .calc-title {
-    font-weight: 700;
-    font-size: 3vh;
-    margin-bottom: 2vh;
-    color: #d4af37;
+  font-weight: 700;
+  font-size: 3vh;
+  margin-bottom: 2vh;
+  color: #d4af37;
 }
-
-/* ... estilos existentes omitidos ... */
 
 .resultado {
   font-family: 'Courier New', Courier, monospace;
   background-color: #222;
   border-radius: 2vh;
   padding: 2vh 3vw;
-  color: #34d399;             /* texto verde */
+  color: #34d399;
   white-space: pre-line;
   font-weight: 600;
   font-size: 2.5vh;
@@ -96,63 +94,63 @@ button#btnCalcular:hover {
 
 .resultado .linha {
   display: flex;
-  align-items: center;        /* alinha verticalmente ícone e texto */
-  gap: 1vmin;                 /* espaçamento horizontal entre ícone e texto */
-  margin-bottom: 1vh;         /* espaçamento vertical entre linhas */
+  align-items: center;
+  gap: 1vmin;
+  margin-bottom: 1vh;
 }
 
 .resultado .icone {
-  width: 3vh;                 /* largura fixa para alinhar colunas de texto */
-  flex: 0 0 3vh;              /* não expande ou contrai, mantém largura fixa */
-  /* ícone (emoji) mantém sua cor própria (🔴🔵⚪🟢 etc.) */
+  width: 3vh;
+  flex: 0 0 3vh;
 }
 
 .resultado .texto {
-  flex: 1;                    /* permite ao texto ocupar todo o espaço restante da linha */
-  /* herda fonte Courier, cor verde (#34d399) do .resultado */
+  flex: 1;
 }
 
-
 @media (max-width: 768px) {
-
   .container {
     max-width: 90vw;
     margin: 0 auto;
     margin-bottom: 3vh;
-}
-h1 {
+  }
+
+  h1 {
     text-align: center;
     margin-bottom: 4vh;
     color: #d4af37;
     font-size: 2.5vh;
-}
+  }
+
   .calc-title {
     font-weight: 700;
     font-size: 2vh;
     margin-bottom: 2vh;
     color: #d4af37;
-}
-  
-.inputs label {
-  display: flex;
-  flex-direction: column;
-  font-weight: 600;
-  font-size: 2vh;
-  color: #d4af37;
-  min-width: 30vh;
-}
+  }
+
+  .inputs label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 2vh;
+    color: #d4af37;
+    min-width: 30vh;
+  }
+
   .inputs input {
-  margin-top: 1vh;
-  padding: 1.5vh 2vw;
-  border: none;
-  border-radius: 1vh;
-  font-size: 2vh;
-  font-weight: 500;
-  outline: none;
-  background-color: #222;
-  color: #fff;
-  transition: background-color 0.3s ease;
-}
+    margin-top: 1vh;
+    padding: 1.5vh 2vw;
+    border: none;
+    border-radius: 1vh;
+    font-size: 2vh;
+    font-weight: 500;
+    outline: none;
+    background-color: #222;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+
   button#btnCalcular {
     display: block;
     margin: 0 auto 4vh auto;
@@ -164,22 +162,25 @@ h1 {
     padding: 1.5vh 10vh;
     border-radius: 3vh;
     transition: background 0.3s ease;
-}
+  }
+
   .resultado .icone {
-  width: 1.5vh;                 /* largura fixa para alinhar colunas de texto */
-  flex: 0 0 3vh;
-  margin-top: -3vh;
-}
+    width: 1.5vh;
+    flex: 0 0 3vh;
+    margin-top: -3vh;
+  }
+
   .resultado {
-  font-family: 'Courier New', Courier, monospace;
-  background-color: #222;
-  border-radius: 2vh;
-  padding:1vh;
-  color: #34d399;             /* texto verde */
-  white-space: pre-line;
-  font-weight: 600;
-  font-size: 2vh;
-  min-height: 10vh;
-  user-select: text;
-  text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #222;
+    border-radius: 2vh;
+    padding: 1vh;
+    color: #34d399;
+    white-space: pre-line;
+    font-weight: 600;
+    font-size: 2vh;
+    min-height: 10vh;
+    user-select: text;
+    text-align: center;
+  }
 }
