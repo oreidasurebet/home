@@ -166,9 +166,9 @@ h1 {
     transition: background 0.3s ease;
 }
   .resultado .icone {
-  width: 2vh;                 /* largura fixa para alinhar colunas de texto */
+  width: 1.5vh;                 /* largura fixa para alinhar colunas de texto */
   flex: 0 0 3vh;
-  margin-top: -2vh;
+  margin-top: -3.5vh;
 }
   .resultado {
   font-family: 'Courier New', Courier, monospace;
