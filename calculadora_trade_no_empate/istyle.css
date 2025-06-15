@@ -170,3 +170,16 @@ h1 {
   flex: 0 0 3vh;
   margin-top: -1vh;
 }
+  .resultado {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #222;
+  border-radius: 2vh;
+  padding:1vh;
+  color: #34d399;             /* texto verde */
+  white-space: pre-line;
+  font-weight: 600;
+  font-size: 2vh;
+  min-height: 10vh;
+  user-select: text;
+  text-align: center;
+}
