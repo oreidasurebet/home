@@ -112,28 +112,40 @@
       font-size: 2.5vh;
       text-align:center;
     }
+  @media (max-width: 768px) {
 
-@media (max-width: 768px) {
-      h1 {
-      font-size: 2.5vh;
-      margin-bottom: 1vh;
-      text-align:center;
+      header {
+      background-color: #000;
+      height: 8vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
     }
-
-    p {
-      font-size: 2vh;
-      text-align:center;
-    }
-nbutton#btnCalcular {
-    display: block;
-    margin: 0 auto 4vh auto;
-    background: linear-gradient(90deg, #d4af37, #f9d976);
+        
+    .logo img {
+    height: 80%;
+    max-height: 5vh;
+}
+   .menu-button {
+    background: none;
     border: none;
-    color: #000;
-    font-weight: 700;
-    font-size: 2.5vh;
-    padding: 1.5vh 10vh;
-    border-radius: 5vh;
+    color: #fff;
+    font-size: 3vh;
     cursor: pointer;
-    transition: background 0.3s ease;
+    color: #cfa749;
+} 
+  strong {
+    color: #cfa749;
+    font-size: 2.5vh;
+}
+h1 {
+    font-size: 3vh;
+    margin-bottom: 1vh;
+    text-align: center;
+}      
+p {
+    font-size: 2vh;
+    text-align: center;
+}    
 }
