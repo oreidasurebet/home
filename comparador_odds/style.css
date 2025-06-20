@@ -1,0 +1,67 @@
+body {
+  background-color: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #d4af37;
+  margin-bottom: 20px;
+}
+
+.upload {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input[type="file"] {
+  margin: 10px;
+}
+
+button {
+  background-color: #d4af37;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #b89530;
+}
+
+table {
+  width: 95%;
+  border-collapse: collapse;
+  margin: 20px auto;
+}
+
+th, td {
+  border: 1px solid #444;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #333;
+}
+
+td {
+  background-color: #222;
+}
+
+td.highlight {
+  background-color: #2e7d32;
+  font-weight: bold;
+}
+
+.surebet-status {
+    text-align: center !important;
+    font-weight: bold;
+    background-color: #222;
+    color: lime; /* ou red, o script já define */
+    padding: 5px;
+}
+
