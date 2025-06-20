@@ -17,12 +17,12 @@ function tocarBip() {
 
 // 🔄 Configuração dos arquivos JSON via Zrok
 const arquivos = [
-    { nome: 'BETANO', caminho: 'https://va9orj9nzjtf.share.zrok.io/betano.json' },
-    { nome: 'STAKE', caminho: 'https://va9orj9nzjtf.share.zrok.io/stake.json' },
-    { nome: 'BET365', caminho: 'https://va9orj9nzjtf.share.zrok.io/bet365.json' },
-    { nome: 'NOVIBET', caminho: 'https://va9orj9nzjtf.share.zrok.io/novibet.json' },
-    { nome: 'BETFAIR', caminho: 'https://va9orj9nzjtf.share.zrok.io/betfair.json' },
-    { nome: 'BETMGM', caminho: 'https://va9orj9nzjtf.share.zrok.io/betmgm.json' }
+    { nome: 'BETANO', caminho: 'https://v9hwchrckkha.share.zrok.io/betano.json' },
+    { nome: 'STAKE', caminho: 'https://v9hwchrckkha.share.zrok.io/stake.json' },
+    { nome: 'BET365', caminho: 'https://v9hwchrckkha.share.zrok.io/bet365.json' },
+    { nome: 'NOVIBET', caminho: 'https://v9hwchrckkha.share.zrok.io/novibet.json' },
+    { nome: 'BETFAIR', caminho: 'https://v9hwchrckkha.share.zrok.io/betfair.json' },
+    { nome: 'BETMGM', caminho: 'https://v9hwchrckkha.share.zrok.io/betmgm.json' }
 ];
 
 // 🔄 Atualiza os dados dos arquivos JSON
