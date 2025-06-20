@@ -17,12 +17,12 @@ function tocarBip() {
 
 // 🔄 Configuração dos arquivos JSON via Zrok
 const arquivos = [
-    { nome: 'BETANO', caminho: 'https://v9hwchrckkha.share.zrok.io/betano.json' },
-    { nome: 'STAKE', caminho: 'https://v9hwchrckkha.share.zrok.io/stake.json' },
-    { nome: 'BET365', caminho: 'https://v9hwchrckkha.share.zrok.io/bet365.json' },
-    { nome: 'NOVIBET', caminho: 'https://v9hwchrckkha.share.zrok.io/novibet.json' },
-    { nome: 'BETFAIR', caminho: 'https://v9hwchrckkha.share.zrok.io/betfair.json' },
-    { nome: 'BETMGM', caminho: 'https://v9hwchrckkha.share.zrok.io/betmgm.json' }
+    { nome: 'BETANO', caminho: 'https://dense-view-auburn-metres.trycloudflare.com/betano.json' },
+    { nome: 'STAKE', caminho: 'https://dense-view-auburn-metres.trycloudflare.com/stake.json' },
+    { nome: 'BET365', caminho: 'https://dense-view-auburn-metres.trycloudflare.com/bet365.json' },
+    { nome: 'NOVIBET', caminho: 'https://dense-view-auburn-metres.trycloudflare.com/novibet.json' },
+    { nome: 'BETFAIR', caminho: 'https://dense-view-auburn-metres.trycloudflare.com/betfair.json' },
+    { nome: 'BETMGM', caminho: 'https://dense-view-auburn-metres.trycloudflare.com/betmgm.json' }
 ];
 
 // 🔄 Atualiza os dados dos arquivos JSON
