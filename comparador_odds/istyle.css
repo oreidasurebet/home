@@ -79,11 +79,6 @@ td.highlight {
         border: none;
     }
  @media (max-width: 768px) {
-  .container {
-    max-width: 90vw;
-    margin: 0 auto;
-    margin-bottom: 3vh;
-  }
 
   h1 {
     text-align: center;
