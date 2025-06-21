@@ -27,18 +27,6 @@ input[type="file"] {
   margin: 10px;
 }
 
-button {
-  background-color: #d4af37;
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #b89530;
-}
 
 table {
   width: 95%;
