@@ -39,17 +39,14 @@
 </div>
 
 <script>
-  // URL do iframe codificada em Base64
   const urlBase64 = "aHR0cDovL29kZHMub3JlaWRhc3VyZWJldC5jb20vMXgyLw==";
 
-  // Decodifica a URL e cria o iframe
   const iframe = document.createElement("iframe");
   iframe.src = atob(urlBase64);
   iframe.style.width = "100%";
   iframe.style.height = "800px";
   iframe.style.border = "none";
 
-  // Insere o iframe na div
   document.getElementById("iframe-container").appendChild(iframe);
 </script>
 
