@@ -16,25 +16,42 @@
 <body>
 
 <header>
-    <div class="logo">
-      <a href="https://oreidasurebet.com" target="_blank">
-        <img src="imagens/logo.png" alt="O Rei da Surebet">
-      </a>
-    </div>
+  <div class="logo">
+    <a href="https://oreidasurebet.com" target="_blank">
+      <img src="imagens/logo.png" alt="O Rei da Surebet">
+    </a>
+  </div>
 
-    <div class="menu">
-      <button class="menu-button">☰ Menu</button>
-      <div class="dropdown">
-        <strong>CALCULADORAS</strong>
-         <a href="../calculadora_de_surebet_e_skewed">Calculadora de Surebet e Skewed</a>
-        <a href="../calculadora_trade_no_empate">Calculadora Trade no Empate</a>
-        <strong>FERRAMENTAS</strong>
-        <a href="../extensão_fullscreen_bet">Extensão FullScreen Bet</a>
-      </div>
+  <div class="menu">
+    <button class="menu-button">☰ Menu</button>
+    <div class="dropdown">
+      <strong>CALCULADORAS</strong>
+      <a href="../calculadora_de_surebet_e_skewed">Calculadora de Surebet e Skewed</a>
+      <a href="../calculadora_trade_no_empate">Calculadora Trade no Empate</a>
+      <strong>FERRAMENTAS</strong>
+      <a href="../extensão_fullscreen_bet">Extensão FullScreen Bet</a>
     </div>
+  </div>
 </header>
-<div class="container">
-  <iframe src="http://odds.oreidasurebet.com/1x2/"></iframe>
+
+<div class="container" id="iframe-container">
+  <!-- O iframe será inserido via JavaScript -->
 </div>
+
+<script>
+  // URL do iframe codificada em Base64
+  const urlBase64 = "aHR0cDovL29kZHMub3JlaWRhc3VyZWJldC5jb20vMXgyLw==";
+
+  // Decodifica a URL e cria o iframe
+  const iframe = document.createElement("iframe");
+  iframe.src = atob(urlBase64);
+  iframe.style.width = "100%";
+  iframe.style.height = "800px";
+  iframe.style.border = "none";
+
+  // Insere o iframe na div
+  document.getElementById("iframe-container").appendChild(iframe);
+</script>
+
 </body>
 </html>
