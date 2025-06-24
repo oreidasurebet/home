@@ -107,8 +107,7 @@
       text-align:center;
     }
     .container {
-     padding: 20px;
-     margin-top: 10vh; /* ✅ Cria espaço abaixo do header */
+     margin-top: 1vh;
     }
     iframe {
     width: 100%;
