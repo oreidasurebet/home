@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Trade no Empate - O Rei da Surebet</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Calculadora de Trade no Empate mais completa. Controle lucro e prejuízo, faça entrada no empate ao vivo e maximize ganhos, ideal para promoções como 2 gols de vantagem. Ferramenta essencial para apostadores profissionais.">
+  <meta name="keywords" content="calculadora trade empate, trade no empate, calculadora apostas, apostas esportivas, 2 gols de vantagem, encerramento aposta, rei da surebet, calculadora de aposta ao vivo, controlar prejuízo, maximizar lucro apostas">
+  <meta name="author" content="O Rei da Surebet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="istyle.css">
+  <link rel="icon" href="imagens/favicon.png" type="image/png">
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #d4af37;
+      margin-bottom: 20px;
+      margin-top:-2vh;
+    }
+
+    .input-container {
+      margin: 15px auto;
+      width: 30%;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+    margin-top: 1vh;
+    padding: 1.5vh 2vw;
+    border: none;
+    border-radius: 1vh;
+    font-size: 2.5vh;
+    font-weight: 500;
+    outline: none;
+    background-color: #222;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    text-align:center;
+}
+
+    input:focus {
+      border: 2px solid #d4af37;
+      box-shadow: 0 0 5px #d4af37;
+      outline: none;
+    }
+
+    .flex-row {
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .flex-row .input-container {
+      width: 30%;
+    }
+
+    button{
+    display: block;
+    margin: 0 auto 4vh auto;
+    background: linear-gradient(90deg, #d4af37, #f9d976);
+    border: none;
+    color: #000;
+    font-weight: 700;
+    font-size: 2.5vmin;
+    padding: 2vh 5vw;
+    border-radius: 10vh;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    }
+
+    .resultado {
+      background-color: #222;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 30px auto;
+      width: 70%;
+      text-align: center;
+      height:70vh;
+      
+    }
+
+    .erro {
+      color: #ff4c4c;
+      font-weight: bold;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    label {
+    text-align: center;
+    color:#d4af37;
+}
+
+    @media (max-width: 768px) {
+      .input-container,
+      .flex-row .input-container,
+      button,
+      .resultado {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="https://oreidasurebet.com" target="_blank">
+        <img src="imagens/logo.png" alt="O Rei da Surebet">
+      </a>
+    </div>
+
+    <div class="menu">
+      <button class="menu-button">☰ Menu</button>
+      <div class="dropdown">
+        <strong>CALCULADORAS</strong>
+         <a href="../calculadora_de_surebet_e_skewed">Calculadora de Surebet e Skewed</a>
+        <a href="../calculadora_trade_no_empate">Calculadora Trade no Empate</a>
+        <strong>FERRAMENTAS</strong>
+        <a href="../extensão_fullscreen_bet">Extensão FullScreen Bet</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>🧮 Calculadora Surebet no Empate (aposta ao vivo)</h1>
+
+  <div class="input-container">
+    <label for="banca">💼 Banca Total (R$):</label>
+    <input type="number" id="banca" placeholder="Ex: 1000" step="0.01">
+  </div>
+
+  <div class="flex-row">
+    <div class="input-container">
+      <label for="odd1">🏠 Odd 1 (Casa):</label>
+      <input type="number" id="odd1" placeholder="Ex: 2.22" step="0.01">
+      
+    </div>
+    <div class="input-container">
+      <label for="odd2">⚖️ Odd 2 (Empate):</label>
+      <input type="number" id="odd2" placeholder="Ex: 3.25" step="0.01">
+    </div>
+  </div>
+
+  <button onclick="calcular()">Calcular</button>
+
+  <div id="saida" class="resultado"></div>
+
+  <script>
+    function calcular() {
+      const banca = parseFloat(document.getElementById("banca").value);
+      const odd1 = parseFloat(document.getElementById("odd1").value);
+      const odd2 = parseFloat(document.getElementById("odd2").value);
+      const saida = document.getElementById("saida");
+
+      if (!banca || !odd1 || !odd2 || odd1 <= 1 || odd2 <= 1) {
+        saida.innerHTML = "<p class='erro'>❌ Informe valores válidos (odds > 1).</p>";
+        return;
+      }
+
+      const inv1 = 1 / odd1;
+      const inv2 = 1 / odd2;
+      const somaInv = inv1 + inv2;
+
+      if (somaInv >= 1) {
+        saida.innerHTML = `<p class='erro'>❌ Não há arbitragem possível. A terceira odd seria negativa.</p>`;
+        return;
+      }
+
+      const odd3 = 1 / (1 - somaInv);
+      const inv3 = 1 / odd3;
+      const totalInv = inv1 + inv2 + inv3;
+
+      const aposta1 = banca * (inv1 / totalInv);
+      const aposta2 = banca * (inv2 / totalInv);
+      const aposta3 = banca * (inv3 / totalInv);
+
+      const retorno = [
+        aposta1 * odd1,
+        aposta2 * odd2,
+        aposta3 * odd3
+      ];
+
+      const lucro = retorno[0] - banca;
+
+      saida.innerHTML = `
+        <div style="margin-bottom: 20px; padding: 12px; border: 2px solid #d4af37; border-radius: 8px;">
+          <p style="font-size: 18px;"><strong>🔢 ODD DO EMPATE PRECISA SER:</strong><br>
+          <span style="font-size: 24px; color: #d4af37; font-weight: bold;">${odd3.toFixed(2)} ou maior</span></p>
+        </div>
+
+        <div style="margin-bottom: 20px; padding: 12px; border: 2px solid #444; border-radius: 8px;">
+          <p style="font-size: 16px; margin-bottom: 10px;"><strong>💰 Distribuição da banca (R$ ${banca.toFixed(2)}):</strong></p>
+          <ul style="font-size: 16px; text-align: center;">
+            <li>🏠 Casa (ODD <span style="color:#d4af37; font-weight:bold;">${odd1}</span>): <strong>R$ ${aposta1.toFixed(2)}</strong></li>
+            <li>⚖️ Empate (ODD <span style="color:#d4af37; font-weight:bold;">${odd2}</span>): <strong>R$ ${aposta2.toFixed(2)}</strong></li>
+            <li>🚩 Visitante (ODD <span style="color:#d4af37; font-weight:bold;">${odd3.toFixed(2)}</span>): <strong>R$ ${aposta3.toFixed(2)}</strong></li>
+          </ul>
+        </div>
+
+        <div style="padding: 12px; border: 2px dashed #555; border-radius: 8px;">
+          <p style="font-size: 16px;"><strong>📈 Retorno garantido:</strong> <span style="color:#0f0; font-weight:bold;">R$ ${retorno[0].toFixed(2)}</span></p>
+          <p style="font-size: 16px;"><strong>📊 Lucro líquido:</strong> <span style="color:#0f0; font-weight:bold;">R$ ${lucro.toFixed(2)}</span></p>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
