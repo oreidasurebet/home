@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
 <meta charset="UTF-8">
 
 <meta
@@ -209,12 +210,12 @@ header{
     display:flex;
     flex-direction:column;
 
-    position:relative;
-
     transition:.35s ease;
+
+    overflow:hidden;
 }
 
-/* CHAT FECHADO */
+/* ================= CHAT FECHADO ================= */
 
 .conteudo-iframes-wrapper.chat-oculto{
 
@@ -226,8 +227,6 @@ header{
     transform:translateX(100%);
 
     opacity:0;
-
-    overflow:hidden;
 }
 
 /* ================= TÍTULO CHAT ================= */
@@ -264,30 +263,27 @@ header{
     display:block;
 }
 
-/* ================= ETIQUETA LATERAL ================= */
+/* ================= ETIQUETA ================= */
 
 .etiqueta-chat{
 
-    position:absolute;
+    position:fixed;
 
     top:50%;
 
-    left:-42px;
+    right:0;
 
     transform:translateY(-50%);
 
     width:42px;
-    height:160px;
+    height:170px;
 
     background:#000;
 
-    border:
-        1px solid #cca353;
-
+    border:1px solid #cca353;
     border-right:none;
 
-    border-radius:
-        12px 0 0 12px;
+    border-radius:12px 0 0 12px;
 
     color:#cca353;
 
@@ -296,8 +292,6 @@ header{
     justify-content:center;
 
     writing-mode:vertical-rl;
-
-    transform-origin:center;
 
     font-size:13px;
     font-weight:bold;
@@ -310,7 +304,10 @@ header{
 
     user-select:none;
 
-    z-index:99999;
+    z-index:999999;
+
+    box-shadow:
+        -4px 0 14px rgba(0,0,0,.35);
 }
 
 .etiqueta-chat:hover{
@@ -322,7 +319,7 @@ header{
     border-color:#ffd700;
 
     box-shadow:
-        -4px 0 15px rgba(204,163,83,.25);
+        -4px 0 18px rgba(204,163,83,.25);
 }
 
 /* ================= MOBILE ================= */
@@ -357,7 +354,7 @@ header{
         height:calc(100vh - 68px);
     }
 
-    /* CHAT */
+    /* chat */
 
     .coluna-xat-lateral{
 
@@ -368,11 +365,9 @@ header{
         border-left:none;
 
         border-bottom:1px solid #262626;
-
-        transition:.35s ease;
     }
 
-    /* CHAT FECHADO */
+    /* fechado */
 
     .conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
 
@@ -385,7 +380,7 @@ header{
         transform:translateY(-100%);
     }
 
-    /* API */
+    /* api */
 
     .coluna-api-principal{
 
@@ -394,33 +389,63 @@ header{
         height:100%;
     }
 
-    /* ETIQUETA MOBILE */
+    /* etiqueta mobile */
 
     .etiqueta-chat{
 
-        top:100%;
+        top:68px;
 
-        left:50%;
+        right:20px;
 
-        transform:translateX(-50%);
+        transform:none;
 
         width:140px;
         height:34px;
 
         writing-mode:initial;
 
-        border-radius:
-            0 0 12px 12px;
+        border-radius:0 0 12px 12px;
 
-        border-right:
-            1px solid #cca353;
-
+        border-right:1px solid #cca353;
         border-top:none;
     }
 
 }
 
+/* ================= ANIMAÇÃO SUAVE ================= */
+
+.etiqueta-chat::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    animation:pulseEtiqueta 2s infinite;
+
+    pointer-events:none;
+}
+
+@keyframes pulseEtiqueta{
+
+    0%{
+        box-shadow:0 0 0 0 rgba(204,163,83,.45);
+    }
+
+    70%{
+        box-shadow:0 0 0 12px rgba(204,163,83,0);
+    }
+
+    100%{
+        box-shadow:0 0 0 0 rgba(204,163,83,0);
+    }
+}
+
 </style>
+
 </head>
 
 <body>
@@ -483,6 +508,16 @@ header{
 
 </header>
 
+<!-- ================= ETIQUETA ================= -->
+
+<div
+    class="etiqueta-chat"
+    id="etiqueta-chat"
+    onclick="alternarLayoutChat()"
+>
+    Abrir Chat
+</div>
+
 <!-- ================= CONTEÚDO ================= -->
 
 <div
@@ -509,23 +544,9 @@ header{
 
     <div class="coluna-xat-lateral">
 
-        <!-- ETIQUETA -->
-
-        <div
-            class="etiqueta-chat"
-            id="etiqueta-chat"
-            onclick="alternarLayoutChat()"
-        >
-            Abrir Chat
-        </div>
-
-        <!-- TÍTULO -->
-
         <div class="header-chat-titulo">
             Chat
         </div>
-
-        <!-- IFRAME -->
 
         <div class="container-iframe-xat">
 
@@ -557,7 +578,9 @@ function alternarLayoutChat(){
             'etiqueta-chat'
         );
 
-    container.classList.toggle('chat-oculto');
+    container.classList.toggle(
+        'chat-oculto'
+    );
 
     if(
         container.classList.contains(
