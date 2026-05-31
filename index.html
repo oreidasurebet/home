@@ -7,7 +7,7 @@
   
   <!-- SEO -->
   <meta name="description" content="O Rei da Surebet - Ferramentas, calculadoras, scanners e extensões para apostas esportivas. Encontre surebets, calcule stakes perfeitas, maximize seus lucros e minimize riscos nas apostas.">
-  <meta name="keywords" content="surebet, apostas esportivas, calculadora surebet, calculadora trade, skewed, extensão scanner, extensão limite de aposta, ferramentas para apostas, scanner de odds, scanner surebet, apostas sem risco, rei da surebet">
+  <meta name="keywords" content="surebet, apostas esportivas, calculatora surebet, calculadora trade, skewed, extensão scanner, extensão limite de aposta, ferramentas para apostas, scanner de odds, scanner surebet, apostas sem risco, rei da surebet">
   <meta name="author" content="O Rei da Surebet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="imagens/favicon.png" type="image/png">
@@ -21,12 +21,13 @@
       overflow: hidden;
     }
 
-    /* Grid do site: API na esquerda e Xat de 580px na direita */
+    /* Grid do site: API na esquerda e Xat de 620px na direita */
     .site-container {
       display: grid;
-      grid-template-columns: 1fr 580px;
+      grid-template-columns: 1fr 620px;
       height: 100vh;
       width: 100vw;
+      position: relative;
       transition: grid-template-columns 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
@@ -41,7 +42,7 @@
       overflow: hidden;
     }
 
-    /* Área da Esquerda: Renderiza o conteúdo do seu site e o iframe da API */
+    /* Área da Esquerda: Conteúdo principal do site e iframe da API */
     .coluna-conteudo-principal {
       display: flex;
       flex-direction: column;
@@ -49,7 +50,7 @@
       height: 100vh;
     }
 
-    /* Estilização para o iframe da sua API ocupar todo o espaço restante */
+    /* Estilização para o iframe da sua API ocupar todo o espaço */
     .iframe-api-container {
       flex: 1;
       width: 100%;
@@ -95,33 +96,51 @@
       display: block;
     }
 
-    /* ================= 🔘 BOTÃO FLUTUANTE DA PÁGINA ================= */
+    /* ================= 🔘 BOTÃO ABRE/FECHA VERTICAL (SEM SETAS E CENTRALIZADO) ================= */
     .btn-chat-site-toggle {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 140px;
-      height: 48px;
+      top: 50%;
+      right: 620px; /* Alinhado exatamente no limite esquerdo do chat aberto */
+      transform: translateY(-50%);
+      width: 38px;
+      height: 160px;
       background-color: #161616;
-      border: 2px solid #cca353;
-      border-radius: 24px;
+      border: 1px solid #cca353;
+      border-right: none; 
+      border-radius: 8px 0 0 8px;
       color: #cca353;
-      font-size: 14px;
-      font-weight: bold;
+      cursor: pointer;
+      z-index: 9999;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-      z-index: 9999;
-      transition: all 0.2s ease;
-      font-family: sans-serif;
+      box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5);
+      transition: right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.2s, border-color 0.2s;
     }
+
+    /* Quando o chat estiver Oculto, força a aba a encostar no canto direito da tela */
+    .site-container.chat-oculto + .btn-chat-site-toggle {
+      right: 0px !important;
+      border-right: 1px solid #cca353;
+    }
+
+    /* Orientação do texto em vertical puro */
+    .texto-vertical-btn {
+      writing-mode: vertical-rl;
+      text-transform: uppercase;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(180deg);
+    }
+
     .btn-chat-site-toggle:hover {
-      transform: scale(1.05);
-      border-color: #ffd700;
       color: #ffd700;
-      box-shadow: 0 0 12px #cca353;
+      border-color: #ffd700;
     }
 
     /* ================= 📱 RESPONSIVIDADE MOBILE ================= */
@@ -143,17 +162,28 @@
       .site-container.chat-oculto .coluna-xat-lateral {
         display: none;
       }
+      .btn-chat-site-toggle {
+        top: auto;
+        bottom: 10px;
+        right: 10px !important;
+        width: 130px;
+        height: 40px;
+        border-radius: 6px;
+        border: 1px solid #cca353;
+        transform: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      }
+      .texto-vertical-btn {
+        writing-mode: horizontal-tb;
+        transform: none;
+        font-size: 12px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🔘 BOTÃO FLUTUANTE QUE GERENCIA OS DOIS IFRAMES -->
-  <button id="btn-toggle-chat" class="btn-chat-site-toggle" onclick="alternarLayoutChat()">
-    💬 Abrir Chat
-  </button>
-
-  <!-- Container estrutural em Grid iniciado com 'chat-oculto' -->
+  <!-- Container estrutural iniciado em Grid com 'chat-oculto' -->
   <div class="site-container chat-oculto" id="layout-container-global">
     
     <!-- COLUNA ESQUERDA: SUA PÁGINA COM O IFRAME DA SUA API -->
@@ -180,16 +210,16 @@
 
       <main>
         <h1>Bem-vindo ao Rei da Surebet</h1>
-        <p>Selecione uma option no menu para começar.</p>
+        <p>Selecione uma opção no menu para começar.</p>
       </main>
 
-      <!-- SEU IFRAME DA API INJETADO AQUI DENTRO DA ESTRUTURA -->
+      <!-- IFRAME DA API INJETADO DENTRO DA ESTRUTURA -->
       <div class="iframe-api-container">
         <iframe src="https://api.oreidasurebet.com" allowtransparency="true"></iframe>
       </div>
     </div>
 
-    <!-- COLUNA DIREITA: IFRAME DO XAT.COM (APARECE EMPURRANDO A API) -->
+    <!-- COLUNA DIREITA: IFRAME DO XAT.COM (620PX) -->
     <div class="coluna-xat-lateral">
       <div class="header-chat-titulo">
         💬 CHATROOM PÚBLICO DO REI
@@ -201,17 +231,25 @@
 
   </div>
 
+  <!-- 🔘 BOTÃO EM ABA VERTICAL SEM SETINHAS -->
+  <button id="btn-toggle-chat" class="btn-chat-site-toggle" onclick="alternarLayoutChat()">
+    <div class="texto-vertical-btn" id="texto-botao-dinamico">
+      <span>Abrir Chat</span>
+    </div>
+  </button>
+
   <script>
     function alternarLayoutChat() {
         const container = document.getElementById('layout-container-global');
-        const botao = document.getElementById('btn-toggle-chat');
+        const txtBotao = document.getElementById('texto-botao-dinamico');
         
         container.classList.toggle('chat-oculto');
         
+        // Altera apenas o texto dependendo se o chat está oculto ou exibido
         if (container.classList.contains('chat-oculto')) {
-            botao.innerHTML = '💬 Abrir Chat';
+            txtBotao.innerHTML = '<span>Abrir Chat</span>';
         } else {
-            botao.innerHTML = '❌ Fechar Chat';
+            txtBotao.innerHTML = '<span>Fechar Chat</span>';
         }
     }
   </script>
