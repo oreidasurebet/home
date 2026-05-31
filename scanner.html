@@ -50,7 +50,7 @@
       height: 100vh;
     }
 
-    /* Estilização para o iframe da sua API ocupar todo o espaço */
+    /* Estilização para o iframe da sua API ocupar todo o espaço restante abaixo do header */
     .iframe-api-container {
       flex: 1;
       width: 100%;
@@ -118,7 +118,7 @@
       transition: right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.2s, border-color 0.2s;
     }
 
-    /* Quando o chat estiver Oculto, força a aba a encostar no canto direito da tela (Corrigido para 0px) */
+    /* Quando o chat estiver Oculto, força a aba a encostar no canto direito da tela (0px) */
     .site-container.chat-oculto + .btn-chat-site-toggle {
       right: 0px !important;
       border-right: 1px solid #cca353;
@@ -186,7 +186,7 @@
   <!-- Container estrutural iniciado em Grid com 'chat-oculto' -->
   <div class="site-container chat-oculto" id="layout-container-global">
     
-    <!-- COLUNA ESQUERDA: SUA PÁGINA COM O IFRAME DA SUA API -->
+    <!-- COLUNA ESQUERDA: HEADER E IFRAME DA SUA API (SEM H1 OU P) -->
     <div class="coluna-conteudo-principal">
       <header>
         <div class="logo">
@@ -208,12 +208,7 @@
         </div>
       </header>
 
-      <main>
-        <h1>Bem-vindo ao Rei da Surebet</h1>
-        <p>Selecione uma opção no menu para começar.</p>
-      </main>
-
-      <!-- IFRAME DA API INJETADO DENTRO DA ESTRUTURA -->
+      <!-- IFRAME DA API QUE SE EXPANDE POR INTEIRO ABAIXO DO MENU -->
       <div class="iframe-api-container">
         <iframe src="https://api.oreidasurebet.com" allowtransparency="true"></iframe>
       </div>
