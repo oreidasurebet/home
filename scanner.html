@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 
 <meta charset="UTF-8">
@@ -10,9 +9,7 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>O Rei da Surebet - Scanner</title>
-
-<link rel="stylesheet" href="style.css">
+<title>O Rei da Surebet</title>
 
 <link
     rel="icon"
@@ -48,10 +45,6 @@ body{
         sans-serif;
 }
 
-body{
-    position:relative;
-}
-
 /* ================= HEADER ================= */
 
 header{
@@ -72,8 +65,6 @@ header{
     position:relative;
 
     z-index:10000;
-
-    flex-shrink:0;
 }
 
 /* ================= LOGO ================= */
@@ -96,16 +87,11 @@ header{
     background:none;
     border:none;
 
-    color:#d4a64f;
+    color:#cca353;
 
     font-size:18px;
 
     cursor:pointer;
-
-    display:flex;
-    align-items:center;
-
-    gap:8px;
 }
 
 .dropdown{
@@ -136,14 +122,12 @@ header{
 
 .dropdown strong{
 
-    color:#cca353;
-
     display:block;
 
-    margin-bottom:10px;
-    margin-top:10px;
+    color:#cca353;
 
-    font-size:13px;
+    margin:
+        10px 0;
 }
 
 .dropdown a{
@@ -154,16 +138,14 @@ header{
 
     text-decoration:none;
 
-    padding:8px 0;
-
-    font-size:14px;
+    padding:7px 0;
 }
 
 .dropdown a:hover{
     color:#ffd700;
 }
 
-/* ================= CONTEÚDO ================= */
+/* ================= LAYOUT ================= */
 
 .conteudo-iframes-wrapper{
 
@@ -207,6 +189,7 @@ header{
 .coluna-xat-lateral{
 
     width:620px;
+
     height:100%;
 
     background:#161616;
@@ -230,12 +213,12 @@ header{
 
 .conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
 
-    transform:translateX(100%);
-
     opacity:0;
+
+    transform:translateX(100%);
 }
 
-/* ================= HEADER CHAT ================= */
+/* ================= TOPO CHAT ================= */
 
 .header-chat-titulo{
 
@@ -251,8 +234,6 @@ header{
 
     font-size:13px;
     font-weight:bold;
-
-    letter-spacing:.5px;
 }
 
 /* ================= IFRAME CHAT ================= */
@@ -267,11 +248,9 @@ header{
     height:100%;
 
     border:none;
-
-    display:block;
 }
 
-/* ================= ETIQUETA DESKTOP ================= */
+/* ================= ETIQUETA ================= */
 
 .etiqueta-chat{
 
@@ -283,15 +262,18 @@ header{
 
     transform:translateY(-50%);
 
-    width:42px;
-    height:170px;
+    width:44px;
+    height:180px;
 
     background:#000;
 
-    border:1px solid #cca353;
+    border:
+        1px solid #cca353;
+
     border-right:none;
 
-    border-radius:12px 0 0 12px;
+    border-radius:
+        12px 0 0 12px;
 
     color:#cca353;
 
@@ -308,19 +290,15 @@ header{
 
     cursor:pointer;
 
-    user-select:none;
-
-    z-index:99999;
-
-    box-shadow:
-        -4px 0 14px rgba(0,0,0,.35);
+    z-index:999999;
 
     transition:
         right .35s ease,
         background .25s ease,
-        color .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
+        color .25s ease;
+
+    box-shadow:
+        -4px 0 14px rgba(0,0,0,.35);
 }
 
 /* acompanha o painel */
@@ -336,14 +314,9 @@ header{
     background:#111;
 
     color:#ffd700;
-
-    border-color:#ffd700;
-
-    box-shadow:
-        -4px 0 18px rgba(204,163,83,.25);
 }
 
-/* ================= PULSE ================= */
+/* pulse */
 
 .etiqueta-chat::after{
 
@@ -355,15 +328,13 @@ header{
 
     border-radius:inherit;
 
-    animation:pulseEtiqueta 2s infinite;
-
-    pointer-events:none;
+    animation:pulse 2s infinite;
 }
 
-@keyframes pulseEtiqueta{
+@keyframes pulse{
 
     0%{
-        box-shadow:0 0 0 0 rgba(204,163,83,.45);
+        box-shadow:0 0 0 0 rgba(204,163,83,.4);
     }
 
     70%{
@@ -386,18 +357,13 @@ header{
 
     header{
         padding:0 10px;
-        flex-shrink:0;
     }
 
     .logo img{
         height:34px;
     }
 
-    .menu-button{
-        font-size:16px;
-    }
-
-    /* ================= ETIQUETA MOBILE ================= */
+    /* botão mobile */
 
     .etiqueta-chat{
 
@@ -409,7 +375,7 @@ header{
         transform:none;
 
         width:100%;
-        height:34px;
+        height:44px;
 
         writing-mode:initial;
 
@@ -417,31 +383,35 @@ header{
 
         border-left:none;
         border-right:none;
+
         border-top:none;
 
-        justify-content:center;
+        background:#111;
 
-        z-index:9999;
+        border-bottom:
+            2px solid #cca353;
+
+        font-size:14px;
+
+        letter-spacing:.5px;
+
+        justify-content:center;
     }
 
-    /* ================= LAYOUT ================= */
+    /* layout */
 
     .conteudo-iframes-wrapper{
-
-        width:100%;
-
-        height:calc(100vh - 102px);
 
         display:flex;
 
         flex-direction:column;
+
+        height:calc(100vh - 112px);
     }
 
-    /* ================= CHAT ================= */
+    /* chat */
 
     .coluna-xat-lateral{
-
-        order:1;
 
         width:100%;
 
@@ -453,34 +423,26 @@ header{
 
         border-bottom:1px solid #262626;
 
+        transform:none !important;
+
+        opacity:1;
+
         transition:
             height .35s ease,
             min-height .35s ease,
             opacity .25s ease;
-
-        opacity:1;
-
-        transform:none;
-
-        overflow:hidden;
-
-        flex-shrink:0;
     }
 
-    /* ================= API ================= */
+    /* api */
 
     .coluna-api-principal{
-
-        order:2;
 
         flex:1;
 
         min-height:0;
-
-        height:100%;
     }
 
-    /* ================= FECHADO ================= */
+    /* fechado */
 
     .conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
 
@@ -491,18 +453,6 @@ header{
         opacity:0;
 
         border-bottom:none;
-    }
-
-}
-
-/* remove movimento lateral no mobile */
-
-@media(max-width:900px){
-
-    .conteudo-iframes-wrapper:not(.chat-oculto)
-    ~ .etiqueta-chat{
-
-        right:0 !important;
     }
 }
 
@@ -515,8 +465,6 @@ header{
 <!-- ================= HEADER ================= -->
 
 <header>
-
-    <!-- LOGO -->
 
     <div class="logo">
 
@@ -534,8 +482,6 @@ header{
 
     </div>
 
-    <!-- MENU -->
-
     <div class="menu">
 
         <button class="menu-button">
@@ -546,22 +492,22 @@ header{
 
             <strong>CALCULADORAS</strong>
 
-            <a href="calculadora_de_surebet_e_skewed">
-                Calculadora de Surebet e Skewed
+            <a href="#">
+                Calculadora Surebet
             </a>
 
-            <a href="calculadora_trade_no_empate">
-                Calculadora Trade no Empate
+            <a href="#">
+                Calculadora Trade
             </a>
 
             <strong>FERRAMENTAS</strong>
 
-            <a href="extensão_fullscreen_bet">
-                Extensão FullScreen Bet
+            <a href="#">
+                Fullscreen Bet
             </a>
 
-            <a href="../extensao_scanner_odds_agora">
-                Extensão Scanner OddsAgora 2.0
+            <a href="#">
+                Scanner OddsAgora
             </a>
 
         </div>
@@ -570,7 +516,7 @@ header{
 
 </header>
 
-<!-- ================= ETIQUETA ================= -->
+<!-- ================= BOTÃO ================= -->
 
 <div
     class="etiqueta-chat"
@@ -587,7 +533,21 @@ header{
     id="layout-container-global"
 >
 
-    <!-- ================= CHAT ================= -->
+    <!-- API -->
+
+    <div class="coluna-api-principal">
+
+        <div class="iframe-api-container">
+
+            <iframe
+                src="https://api.oreidasurebet.com"
+            ></iframe>
+
+        </div>
+
+    </div>
+
+    <!-- CHAT -->
 
     <div class="coluna-xat-lateral">
 
@@ -599,23 +559,7 @@ header{
 
             <iframe
                 src="https://xat.com/embed/chat.php#id=220516405&gn=oreidasurebet"
-                allowtransparency="true"
                 scrolling="no"
-            ></iframe>
-
-        </div>
-
-    </div>
-
-    <!-- ================= API ================= -->
-
-    <div class="coluna-api-principal">
-
-        <div class="iframe-api-container">
-
-            <iframe
-                src="https://api.oreidasurebet.com"
-                allowtransparency="true"
             ></iframe>
 
         </div>
