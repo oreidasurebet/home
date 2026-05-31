@@ -167,7 +167,7 @@ header{
 
 .etiqueta-chat{
 
-    position:absolute;
+    position:fixed;
 
     top:50%;
 
@@ -200,14 +200,27 @@ header{
 
     cursor:pointer;
 
-    transition:.25s ease;
-
     user-select:none;
 
     z-index:99999;
 
     box-shadow:
         -4px 0 14px rgba(0,0,0,.35);
+
+    transition:
+        right .35s ease,
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+/* acompanha o painel */
+
+.conteudo-iframes-wrapper:not(.chat-oculto)
+~ .etiqueta-chat{
+
+    right:620px;
 }
 
 .etiqueta-chat:hover{
@@ -258,9 +271,7 @@ header{
 
 .conteudo-iframes-wrapper{
 
-    width:calc(100% - 42px);
-
-    margin-right:42px;
+    width:100%;
 
     height:calc(100vh - 68px);
 
@@ -386,14 +397,14 @@ header{
         font-size:16px;
     }
 
-    /* ================= ETIQUETA ================= */
+    /* etiqueta mobile */
 
     .etiqueta-chat{
 
         position:relative;
 
         top:0;
-        right:0;
+        right:0 !important;
 
         transform:none;
 
@@ -409,17 +420,13 @@ header{
         border-top:none;
 
         justify-content:center;
-
-        flex-shrink:0;
     }
 
-    /* ================= LAYOUT ================= */
+    /* layout */
 
     .conteudo-iframes-wrapper{
 
         width:100%;
-
-        margin-right:0;
 
         display:flex;
 
@@ -428,7 +435,7 @@ header{
         height:calc(100vh - 102px);
     }
 
-    /* ================= CHAT ================= */
+    /* chat */
 
     .coluna-xat-lateral{
 
@@ -458,7 +465,7 @@ header{
         flex-shrink:0;
     }
 
-    /* ================= API ================= */
+    /* api */
 
     .coluna-api-principal{
 
@@ -471,7 +478,7 @@ header{
         height:100%;
     }
 
-    /* ================= FECHADO ================= */
+    /* fechado */
 
     .conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
 
@@ -549,16 +556,6 @@ header{
 
 </header>
 
-<!-- ================= ETIQUETA ================= -->
-
-<div
-    class="etiqueta-chat"
-    id="etiqueta-chat"
-    onclick="alternarLayoutChat()"
->
-    Abrir Chat
-</div>
-
 <!-- ================= CONTEÚDO ================= -->
 
 <div
@@ -566,7 +563,7 @@ header{
     id="layout-container-global"
 >
 
-    <!-- ================= API ================= -->
+    <!-- API -->
 
     <div class="coluna-api-principal">
 
@@ -581,7 +578,7 @@ header{
 
     </div>
 
-    <!-- ================= CHAT ================= -->
+    <!-- CHAT -->
 
     <div class="coluna-xat-lateral">
 
@@ -601,6 +598,16 @@ header{
 
     </div>
 
+</div>
+
+<!-- ================= ETIQUETA ================= -->
+
+<div
+    class="etiqueta-chat"
+    id="etiqueta-chat"
+    onclick="alternarLayoutChat()"
+>
+    Abrir Chat
 </div>
 
 <!-- ================= SCRIPT ================= -->
