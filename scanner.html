@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>O Rei da Surebet - Ferramentas, Calculadoras e Extensões para Apostas Esportivas</title>
   
+  <!-- SEO -->
   <meta name="description" content="O Rei da Surebet - Ferramentas, calculadoras, scanners e extensões para apostas esportivas. Encontre surebets, calcule stakes perfeitas, maximize seus lucros e minimize riscos nas apostas.">
   <meta name="keywords" content="surebet, apostas esportivas, calculatora surebet, calculadora trade, skewed, extensão scanner, extensão limite de aposta, ferramentas para apostas, scanner de odds, scanner surebet, apostas sem risco, rei da surebet">
   <meta name="author" content="O Rei da Surebet">
@@ -23,7 +24,7 @@
       background-color: #0d0d0d;
     }
 
-    /* Header Fixo no Topo com os elementos alinhados lado a lado */
+    /* Header Fixo no Topo com os elementos alinhados lado a lado sempre */
     header {
       width: 100vw;
       box-sizing: border-box;
@@ -133,13 +134,14 @@
       display: block;
     }
 
-    /* ================= 📱 RESPONSIVIDADE MOBILE ================= */
+    /* ================= 📱 RESPONSIVIDADE MOBILE CORRIGIDA ================= */
     @media (max-width: 900px) {
       header {
         padding: 10px;
         gap: 10px;
       }
 
+      /* Mantém o botão alinhado de forma limpa no topo sem quebrar layout */
       .btn-header-chat-toggle {
         padding: 6px 12px;
         font-size: 11px;
@@ -179,6 +181,7 @@
 </head>
 <body>
 
+  <!-- HEADER COMPLETO COM O BOTÃO NO CENTRO TANTO NO PC QUANTO NO CELULAR -->
   <header>
     <div class="logo">
       <a href="https://oreidasurebet.com" target="_blank">
@@ -186,6 +189,7 @@
       </a>
     </div>
 
+    <!-- 🔘 BOTÃO INTEGRADO DIRETAMENTE NO MENU SUPERIOR (FIXO) -->
     <button id="btn-toggle-chat" class="btn-header-chat-toggle" onclick="alternarLayoutChat()">
       Abrir Chat
     </button>
@@ -203,14 +207,17 @@
     </div>
   </header>
 
+  <!-- CONTÊINER OPERACIONAL DOS IFRAMES INICIADO FECHADO POR PADRÃO -->
   <div class="conteudo-iframes-wrapper chat-oculto" id="layout-container-global">
     
+    <!-- ÁREA PRINCIPAL: IFRAME DA SUA API -->
     <div class="coluna-api-principal">
       <div class="iframe-api-container">
         <iframe src="https://api.oreidasurebet.com" allowtransparency="true"></iframe>
       </div>
     </div>
 
+    <!-- PAINEL DO CHAT (620PX DESKTOP / 400PX NO TOPO MOBILE) -->
     <div class="coluna-xat-lateral">
       <div class="header-chat-titulo">
         Chat
