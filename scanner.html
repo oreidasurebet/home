@@ -96,7 +96,7 @@
       display: block;
     }
 
-    /* ================= 🔘 BOTÃO ABRE/FECHA VERTICAL (SEM SETAS E CENTRALIZADO) ================= */
+    /* ================= 🔘 BOTÃO ABRE/FECHA VERTICAL (SEM SETAS E ENCOSTADO) ================= */
     .btn-chat-site-toggle {
       position: fixed;
       top: 50%;
@@ -118,7 +118,7 @@
       transition: right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.2s, border-color 0.2s;
     }
 
-    /* Quando o chat estiver Oculto, força a aba a encostar no canto direito da tela */
+    /* Quando o chat estiver Oculto, força a aba a encostar no canto direito da tela (Corrigido para 0px) */
     .site-container.chat-oculto + .btn-chat-site-toggle {
       right: 0px !important;
       border-right: 1px solid #cca353;
@@ -231,7 +231,7 @@
 
   </div>
 
-  <!-- 🔘 BOTÃO EM ABA VERTICAL SEM SETINHAS -->
+  <!-- 🔘 BOTÃO EM ABA VERTICAL SEM SETINHAS E ENCOSTADO POR PADRÃO -->
   <button id="btn-toggle-chat" class="btn-chat-site-toggle" onclick="alternarLayoutChat()">
     <div class="texto-vertical-btn" id="texto-botao-dinamico">
       <span>Abrir Chat</span>
