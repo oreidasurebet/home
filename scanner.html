@@ -23,15 +23,46 @@
       background-color: #0d0d0d;
     }
 
-    /* Header Fixo no Topo: Ocupa 100% da largura sempre */
+    /* Header Fixo no Topo com os elementos alinhados lado a lado */
     header {
       width: 100vw;
       box-sizing: border-box;
       flex-shrink: 0;
       z-index: 10000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #000;
+      border-bottom: 1px solid #262626;
     }
 
-    /* Área abaixo do Header: No desktop divide em colunas (lado a lado) */
+    /* Estilização do Botão de Chat posicionado no centro do Header */
+    .btn-header-chat-toggle {
+      background-color: #161616;
+      border: 1px solid #cca353;
+      border-radius: 4px;
+      color: #cca353;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      letter-spacing: 1px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-header-chat-toggle:hover {
+      color: #ffd700;
+      border-color: #ffd700;
+      background-color: #222;
+      box-shadow: 0 0 8px rgba(204, 163, 83, 0.3);
+    }
+
+    /* Área abaixo do Header: Divide o espaço entre os Iframes */
     .conteudo-iframes-wrapper {
       display: grid;
       grid-template-columns: 1fr 620px;
@@ -41,18 +72,18 @@
       transition: grid-template-columns 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
-    /* Estado inicial: Oculta o xat no desktop */
+    /* Estado inicial: Oculta o xat e deixa a API em 100% da largura */
     .conteudo-iframes-wrapper.chat-oculto {
       grid-template-columns: 1fr 0px;
     }
 
-    /* Garante o fechamento total do painel lateral no desktop */
+    /* Garante o fechamento total do painel lateral */
     .conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral {
       visibility: hidden;
       overflow: hidden;
     }
 
-    /* Contêiner do Iframe da API */
+    /* Contêiner do Iframe da API (Esquerda) */
     .coluna-api-principal {
       width: 100%;
       height: 100%;
@@ -102,56 +133,21 @@
       display: block;
     }
 
-    /* ================= 🔘 BOTÃO ABRE/FECHA VERTICAL (DESKTOP) ================= */
-    .btn-chat-site-toggle {
-      position: fixed;
-      top: calc(50% + 35px); 
-      right: 620px; 
-      transform: translateY(-50%);
-      width: 38px;
-      height: 160px;
-      background-color: #161616;
-      border: 1px solid #cca353;
-      border-right: none; 
-      border-radius: 8px 0 0 8px;
-      color: #cca353;
-      cursor: pointer;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5);
-      transition: right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.2s, border-color 0.2s;
-    }
-
-    .conteudo-iframes-wrapper.chat-oculto + .btn-chat-site-toggle {
-      right: 0px !important;
-      border-right: 1px solid #cca353;
-    }
-
-    .texto-vertical-btn {
-      writing-mode: vertical-rl;
-      text-transform: uppercase;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform: rotate(180deg);
-    }
-
-    .btn-chat-site-toggle:hover {
-      color: #ffd700;
-      border-color: #ffd700;
-    }
-
-    /* ================= 📱 RESPONSIVIDADE MOBILE (XAT NO TOPO) ================= */
+    /* ================= 📱 RESPONSIVIDADE MOBILE ================= */
     @media (max-width: 900px) {
+      header {
+        padding: 10px;
+        gap: 10px;
+      }
+
+      .btn-header-chat-toggle {
+        padding: 6px 12px;
+        font-size: 11px;
+      }
+
       .conteudo-iframes-wrapper {
         display: flex;
-        flex-direction: column; /* Muda o fluxo para vertical (cima/baixo) */
+        flex-direction: column;
         height: 100%;
       }
       
@@ -159,45 +155,24 @@
       .coluna-xat-lateral {
         order: 1;
         width: 100% !important;
-        height: 400px; /* Altura ideal para o chat completo */
+        height: 400px; 
         flex-shrink: 0;
         border-left: none;
         border-bottom: 1px solid #262626;
       }
 
-      /* Sua API vai para baixo, dividindo a tela com o xat aberto */
+      /* Sua API desce dividindo a tela com o xat */
       .coluna-api-principal {
         order: 2;
         flex: 1;
         height: auto;
       }
 
-      /* Quando oculto, o xat some e a API toma conta de 100% da tela abaixo do header */
       .conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral {
         display: none;
       }
       .conteudo-iframes-wrapper.chat-oculto .coluna-api-principal {
         height: 100%;
-      }
-
-      /* Botão mobile horizontal fixado de forma limpa na barra inferior */
-      .btn-chat-site-toggle {
-        top: auto;
-        bottom: 15px;
-        right: 15px !important;
-        width: 130px;
-        height: 42px;
-        border-radius: 6px;
-        border: 1px solid #cca353;
-        transform: none;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-        background-color: #161616;
-      }
-      .texto-vertical-btn {
-        writing-mode: horizontal-tb;
-        transform: none;
-        font-size: 12px;
-        letter-spacing: 0.5px;
       }
     }
   </style>
@@ -210,6 +185,10 @@
         <img src="imagens/logo.png" alt="O Rei da Surebet">
       </a>
     </div>
+
+    <button id="btn-toggle-chat" class="btn-header-chat-toggle" onclick="alternarLayoutChat()">
+      Abrir Chat
+    </button>
 
     <div class="menu">
       <button class="menu-button">☰ Menu</button>
@@ -243,23 +222,18 @@
 
   </div>
 
-  <button id="btn-toggle-chat" class="btn-chat-site-toggle" onclick="alternarLayoutChat()">
-    <div class="texto-vertical-btn" id="texto-botao-dinamico">
-      <span>Abrir Chat</span>
-    </div>
-  </button>
-
   <script>
     function alternarLayoutChat() {
         const container = document.getElementById('layout-container-global');
-        const txtBotao = document.getElementById('texto-botao-dinamico');
+        const btnChat = document.getElementById('btn-toggle-chat');
         
         container.classList.toggle('chat-oculto');
         
+        // Modifica textualmente o botão fixado no cabeçalho superior
         if (container.classList.contains('chat-oculto')) {
-            txtBotao.innerHTML = '<span>Abrir Chat</span>';
+            btnChat.innerText = 'Abrir Chat';
         } else {
-            txtBotao.innerHTML = '<span>Fechar Chat</span>';
+            btnChat.innerText = 'Fechar Chat';
         }
     }
   </script>
