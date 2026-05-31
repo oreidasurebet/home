@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>O Rei da Surebet - Ferramentas, Calculadoras e Extensões para Apostas Esportivas</title>
   
-  <!-- SEO -->
   <meta name="description" content="O Rei da Surebet - Ferramentas, calculadoras, scanners e extensões para apostas esportivas. Encontre surebets, calcule stakes perfeitas, maximize seus lucros e minimize riscos nas apostas.">
   <meta name="keywords" content="surebet, apostas esportivas, calculatora surebet, calculadora trade, skewed, extensão scanner, extensão limite de aposta, ferramentas para apostas, scanner de odds, scanner surebet, apostas sem risco, rei da surebet">
   <meta name="author" content="O Rei da Surebet">
@@ -32,7 +31,7 @@
       z-index: 10000;
     }
 
-    /* Área abaixo do Header: Divide o espaço entre os Iframes */
+    /* Área abaixo do Header: No desktop divide em colunas (lado a lado) */
     .conteudo-iframes-wrapper {
       display: grid;
       grid-template-columns: 1fr 620px;
@@ -42,18 +41,18 @@
       transition: grid-template-columns 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
-    /* Estado inicial: Oculta o xat e deixa a API ocupando 100% da área inferior */
+    /* Estado inicial: Oculta o xat no desktop */
     .conteudo-iframes-wrapper.chat-oculto {
       grid-template-columns: 1fr 0px;
     }
 
-    /* Garante o fechamento total do painel lateral */
+    /* Garante o fechamento total do painel lateral no desktop */
     .conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral {
       visibility: hidden;
       overflow: hidden;
     }
 
-    /* Área da Esquerda: Apenas o contêiner do Iframe da API */
+    /* Contêiner do Iframe da API */
     .coluna-api-principal {
       width: 100%;
       height: 100%;
@@ -70,7 +69,7 @@
       display: block;
     }
 
-    /* ================= 🟢 BARRA LATERAL DIREITA (XAT.COM) ================= */
+    /* ================= 🟢 BARRA LATERAL DIREITA NO DESKTOP (XAT.COM) ================= */
     .coluna-xat-lateral {
       display: flex;
       flex-direction: column;
@@ -79,7 +78,6 @@
       height: 100%;
     }
 
-    /* Ajustado para exibir apenas "Chat" */
     .header-chat-titulo {
       background-color: #111;
       padding: 15px;
@@ -104,10 +102,10 @@
       display: block;
     }
 
-    /* ================= 🔘 BOTÃO ABRE/FECHA VERTICAL (ALINHADO AO TOPO DO IFRAME) ================= */
+    /* ================= 🔘 BOTÃO ABRE/FECHA VERTICAL (DESKTOP) ================= */
     .btn-chat-site-toggle {
       position: fixed;
-      top: calc(50% + 35px); /* Centralizado verticalmente considerando a área abaixo do header */
+      top: calc(50% + 35px); 
       right: 620px; 
       transform: translateY(-50%);
       width: 38px;
@@ -126,13 +124,11 @@
       transition: right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.2s, border-color 0.2s;
     }
 
-    /* Move a aba para o canto da tela quando o chat estiver oculto */
     .conteudo-iframes-wrapper.chat-oculto + .btn-chat-site-toggle {
       right: 0px !important;
       border-right: 1px solid #cca353;
     }
 
-    /* Texto vertical limpo sem setas */
     .texto-vertical-btn {
       writing-mode: vertical-rl;
       text-transform: uppercase;
@@ -151,55 +147,63 @@
       border-color: #ffd700;
     }
 
-    /* ================= 📱 RESPONSIVIDADE MOBILE ================= */
+    /* ================= 📱 RESPONSIVIDADE MOBILE (XAT NO TOPO) ================= */
     @media (max-width: 900px) {
-      body {
-        overflow: auto;
-      }
       .conteudo-iframes-wrapper {
         display: flex;
-        flex-direction: column;
-        height: auto;
+        flex-direction: column; /* Muda o fluxo para vertical (cima/baixo) */
+        height: 100%;
       }
+      
+      /* Xat fixado no topo, logo abaixo do header */
       .coluna-xat-lateral {
         order: 1;
         width: 100% !important;
-        height: 400px;
+        height: 400px; /* Altura ideal para o chat completo */
+        flex-shrink: 0;
         border-left: none;
         border-bottom: 1px solid #262626;
       }
+
+      /* Sua API vai para baixo, dividindo a tela com o xat aberto */
       .coluna-api-principal {
         order: 2;
-        height: calc(100vh - 400px);
+        flex: 1;
+        height: auto;
       }
+
+      /* Quando oculto, o xat some e a API toma conta de 100% da tela abaixo do header */
       .conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral {
         display: none;
       }
       .conteudo-iframes-wrapper.chat-oculto .coluna-api-principal {
         height: 100%;
       }
+
+      /* Botão mobile horizontal fixado de forma limpa na barra inferior */
       .btn-chat-site-toggle {
         top: auto;
-        bottom: 10px;
-        right: 10px !important;
+        bottom: 15px;
+        right: 15px !important;
         width: 130px;
-        height: 40px;
+        height: 42px;
         border-radius: 6px;
         border: 1px solid #cca353;
         transform: none;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        background-color: #161616;
       }
       .texto-vertical-btn {
         writing-mode: horizontal-tb;
         transform: none;
         font-size: 12px;
+        letter-spacing: 0.5px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER ATUAL PRESERVADO COMPLEMENTARMENTE FORA DO GRID -->
   <header>
     <div class="logo">
       <a href="https://oreidasurebet.com" target="_blank">
@@ -220,19 +224,15 @@
     </div>
   </header>
 
-  <!-- CONTÊINER OPERACIONAL DOS IFRAMES INICIADO COM 'chat-oculto' -->
   <div class="conteudo-iframes-wrapper chat-oculto" id="layout-container-global">
     
-    <!-- ÁREA DA ESQUERDA: APENAS O IFRAME DA SUA API -->
     <div class="coluna-api-principal">
       <div class="iframe-api-container">
         <iframe src="https://api.oreidasurebet.com" allowtransparency="true"></iframe>
       </div>
     </div>
 
-    <!-- COLUNA DIREITA: IFRAME DO XAT.COM (620PX) -->
     <div class="coluna-xat-lateral">
-      <!-- Alterado para exibir apenas "Chat" -->
       <div class="header-chat-titulo">
         Chat
       </div>
@@ -243,7 +243,6 @@
 
   </div>
 
-  <!-- 🔘 ABA VERTICAL COORDENADA DE ACORDO COM A ÁREA DOS IFRAMES -->
   <button id="btn-toggle-chat" class="btn-chat-site-toggle" onclick="alternarLayoutChat()">
     <div class="texto-vertical-btn" id="texto-botao-dinamico">
       <span>Abrir Chat</span>
