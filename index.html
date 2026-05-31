@@ -7,252 +7,37 @@
   
   <!-- SEO -->
   <meta name="description" content="O Rei da Surebet - Ferramentas, calculadoras, scanners e extensões para apostas esportivas. Encontre surebets, calcule stakes perfeitas, maximize seus lucros e minimize riscos nas apostas.">
-  <meta name="keywords" content="surebet, apostas esportivas, calculatora surebet, calculadora trade, skewed, extensão scanner, extensão limite de aposta, ferramentas para apostas, scanner de odds, scanner surebet, apostas sem risco, rei da surebet">
+  <meta name="keywords" content="surebet, apostas esportivas, calculadora surebet, calculadora trade, skewed, extensão scanner, extensão limite de aposta, ferramentas para apostas, scanner de odds, scanner surebet, apostas sem risco, rei da surebet">
   <meta name="author" content="O Rei da Surebet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="imagens/favicon.png" type="image/png">
-
-  <style>
-    /* ================= ESTRUTURA DE DIVISÃO DOS IFRAMES ================= */
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    /* Grid do site: API na esquerda e Xat de 620px na direita */
-    .site-container {
-      display: grid;
-      grid-template-columns: 1fr 620px;
-      height: 100vh;
-      width: 100vw;
-      position: relative;
-      transition: grid-template-columns 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-
-    /* Estado inicial: Oculta o xat e expande a API em 100% da tela */
-    .site-container.chat-oculto {
-      grid-template-columns: 1fr 0px;
-    }
-
-    /* Garante que o conteúdo do xat suma totalmente ao fechar */
-    .site-container.chat-oculto .coluna-xat-lateral {
-      visibility: hidden;
-      overflow: hidden;
-    }
-
-    /* Área da Esquerda: Conteúdo principal do site e iframe da API */
-    .coluna-conteudo-principal {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: 100vh;
-    }
-
-    /* Estilização para o iframe da sua API ocupar todo o espaço */
-    .iframe-api-container {
-      flex: 1;
-      width: 100%;
-      height: 100%;
-    }
-    .iframe-api-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-
-    /* ================= 🟢 BARRA LATERAL DIREITA (XAT.COM) ================= */
-    .coluna-xat-lateral {
-      display: flex;
-      flex-direction: column;
-      background-color: #161616;
-      border-left: 1px solid #262626;
-      height: 100vh;
-    }
-
-    .header-chat-titulo {
-      background-color: #111;
-      padding: 15px;
-      border-bottom: 1px solid #262626;
-      font-size: 13px;
-      font-weight: bold;
-      color: #cca353;
-      text-align: center;
-      letter-spacing: 0.5px;
-      font-family: sans-serif;
-    }
-
-    .container-iframe-xat {
-      flex: 1;
-      width: 100%;
-      height: 100%;
-    }
-    .container-iframe-xat iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-
-    /* ================= 🔘 BOTÃO ABRE/FECHA VERTICAL (SEM SETAS E CENTRALIZADO) ================= */
-    .btn-chat-site-toggle {
-      position: fixed;
-      top: 50%;
-      right: 620px; /* Alinhado exatamente no limite esquerdo do chat aberto */
-      transform: translateY(-50%);
-      width: 38px;
-      height: 160px;
-      background-color: #161616;
-      border: 1px solid #cca353;
-      border-right: none; 
-      border-radius: 8px 0 0 8px;
-      color: #cca353;
-      cursor: pointer;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5);
-      transition: right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.2s, border-color 0.2s;
-    }
-
-    /* Quando o chat estiver Oculto, força a aba a encostar no canto direito da tela */
-    .site-container.chat-oculto + .btn-chat-site-toggle {
-      right: 0px !important;
-      border-right: 1px solid #cca353;
-    }
-
-    /* Orientação do texto em vertical puro */
-    .texto-vertical-btn {
-      writing-mode: vertical-rl;
-      text-transform: uppercase;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform: rotate(180deg);
-    }
-
-    .btn-chat-site-toggle:hover {
-      color: #ffd700;
-      border-color: #ffd700;
-    }
-
-    /* ================= 📱 RESPONSIVIDADE MOBILE ================= */
-    @media (max-width: 900px) {
-      .site-container {
-        display: flex;
-        flex-direction: column;
-      }
-      .coluna-xat-lateral {
-        order: 1;
-        width: 100% !important;
-        height: 400px;
-        border-left: none;
-        border-bottom: 1px solid #262626;
-      }
-      .coluna-conteudo-principal {
-        order: 2;
-      }
-      .site-container.chat-oculto .coluna-xat-lateral {
-        display: none;
-      }
-      .btn-chat-site-toggle {
-        top: auto;
-        bottom: 10px;
-        right: 10px !important;
-        width: 130px;
-        height: 40px;
-        border-radius: 6px;
-        border: 1px solid #cca353;
-        transform: none;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      }
-      .texto-vertical-btn {
-        writing-mode: horizontal-tb;
-        transform: none;
-        font-size: 12px;
-      }
-    }
-  </style>
 </head>
 <body>
 
-  <!-- Container estrutural iniciado em Grid com 'chat-oculto' -->
-  <div class="site-container chat-oculto" id="layout-container-global">
-    
-    <!-- COLUNA ESQUERDA: SUA PÁGINA COM O IFRAME DA SUA API -->
-    <div class="coluna-conteudo-principal">
-      <header>
-        <div class="logo">
-          <a href="https://oreidasurebet.com" target="_blank">
-            <img src="imagens/logo.png" alt="O Rei da Surebet">
-          </a>
-        </div>
-
-        <div class="menu">
-          <button class="menu-button">☰ Menu</button>
-          <div class="dropdown">
-            <strong>CALCULADORAS</strong>
-            <a href="calculadora_de_surebet_e_skewed">Calculadora de Surebet e Skewed</a>
-            <a href="calculadora_trade_no_empate">Calculadora Trade no Empate</a>
-            <strong>FERRAMENTAS</strong>
-            <a href="extensão_fullscreen_bet">Extensão FullScreen Bet</a>
-            <a href="../extensao_scanner_odds_agora">Extensão Scanner OddsAgora 2.0</a>
-          </div>
-        </div>
-      </header>
-
-      <main>
-        <h1>Bem-vindo ao Rei da Surebet</h1>
-        <p>Selecione uma opção no menu para começar.</p>
-      </main>
-
-      <!-- IFRAME DA API INJETADO DENTRO DA ESTRUTURA -->
-      <div class="iframe-api-container">
-        <iframe src="https://api.oreidasurebet.com" allowtransparency="true"></iframe>
-      </div>
+  <header>
+    <div class="logo">
+      <a href="https://oreidasurebet.com" target="_blank">
+        <img src="imagens/logo.png" alt="O Rei da Surebet">
+      </a>
     </div>
 
-    <!-- COLUNA DIREITA: IFRAME DO XAT.COM (620PX) -->
-    <div class="coluna-xat-lateral">
-      <div class="header-chat-titulo">
-        💬 CHATROOM PÚBLICO DO REI
-      </div>
-      <div class="container-iframe-xat">
-        <iframe src="https://xat.com/embed/chat.php#id=220516405&gn=oreidasurebet" allowtransparency="true" scrolling="no"></iframe>
+    <div class="menu">
+      <button class="menu-button">☰ Menu</button>
+      <div class="dropdown">
+        <strong>CALCULADORAS</strong>
+        <a href="calculadora_de_surebet_e_skewed">Calculadora de Surebet e Skewed</a>
+        <a href="calculadora_trade_no_empate">Calculadora Trade no Empate</a>
+        <strong>FERRAMENTAS</strong>
+        <a href="extensão_fullscreen_bet">Extensão FullScreen Bet</a>
+        <a href="../extensao_scanner_odds_agora">Extensão Scanner OddsAgora 2.0</a>
       </div>
     </div>
+  </header>
 
-  </div>
-
-  <!-- 🔘 BOTÃO EM ABA VERTICAL SEM SETINHAS -->
-  <button id="btn-toggle-chat" class="btn-chat-site-toggle" onclick="alternarLayoutChat()">
-    <div class="texto-vertical-btn" id="texto-botao-dinamico">
-      <span>Abrir Chat</span>
-    </div>
-  </button>
-
-  <script>
-    function alternarLayoutChat() {
-        const container = document.getElementById('layout-container-global');
-        const txtBotao = document.getElementById('texto-botao-dinamico');
-        
-        container.classList.toggle('chat-oculto');
-        
-        // Altera apenas o texto dependendo se o chat está oculto ou exibido
-        if (container.classList.contains('chat-oculto')) {
-            txtBotao.innerHTML = '<span>Abrir Chat</span>';
-        } else {
-            txtBotao.innerHTML = '<span>Fechar Chat</span>';
-        }
-    }
-  </script>
+  <main>
+    <h1>Bem-vindo ao Rei da Surebet</h1>
+    <p>Selecione uma opção no menu para começar.</p>
+  </main>
 
 </body>
 </html>
