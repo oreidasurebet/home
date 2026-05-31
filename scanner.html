@@ -163,7 +163,115 @@ header{
     color:#ffd700;
 }
 
-/* ================= ETIQUETA ================= */
+/* ================= CONTEÚDO ================= */
+
+.conteudo-iframes-wrapper{
+
+    width:100%;
+
+    height:calc(100vh - 68px);
+
+    display:grid;
+
+    grid-template-columns:1fr 620px;
+
+    transition:grid-template-columns .35s ease;
+}
+
+/* ================= API ================= */
+
+.coluna-api-principal{
+
+    width:100%;
+    height:100%;
+}
+
+.iframe-api-container{
+
+    width:100%;
+    height:100%;
+}
+
+.iframe-api-container iframe{
+
+    width:100%;
+    height:100%;
+
+    border:none;
+
+    display:block;
+}
+
+/* ================= CHAT ================= */
+
+.coluna-xat-lateral{
+
+    width:620px;
+    height:100%;
+
+    background:#161616;
+
+    border-left:1px solid #262626;
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:hidden;
+
+    transition:.35s ease;
+}
+
+/* ================= FECHADO ================= */
+
+.conteudo-iframes-wrapper.chat-oculto{
+
+    grid-template-columns:1fr 0px;
+}
+
+.conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
+
+    transform:translateX(100%);
+
+    opacity:0;
+}
+
+/* ================= HEADER CHAT ================= */
+
+.header-chat-titulo{
+
+    background:#111;
+
+    border-bottom:1px solid #262626;
+
+    padding:14px;
+
+    text-align:center;
+
+    color:#cca353;
+
+    font-size:13px;
+    font-weight:bold;
+
+    letter-spacing:.5px;
+}
+
+/* ================= IFRAME CHAT ================= */
+
+.container-iframe-xat{
+    flex:1;
+}
+
+.container-iframe-xat iframe{
+
+    width:100%;
+    height:100%;
+
+    border:none;
+
+    display:block;
+}
+
+/* ================= ETIQUETA DESKTOP ================= */
 
 .etiqueta-chat{
 
@@ -267,114 +375,6 @@ header{
     }
 }
 
-/* ================= CONTEÚDO ================= */
-
-.conteudo-iframes-wrapper{
-
-    width:100%;
-
-    height:calc(100vh - 68px);
-
-    display:grid;
-
-    grid-template-columns:1fr 620px;
-
-    transition:grid-template-columns .35s ease;
-}
-
-/* ================= API ================= */
-
-.coluna-api-principal{
-
-    width:100%;
-    height:100%;
-}
-
-.iframe-api-container{
-
-    width:100%;
-    height:100%;
-}
-
-.iframe-api-container iframe{
-
-    width:100%;
-    height:100%;
-
-    border:none;
-
-    display:block;
-}
-
-/* ================= CHAT ================= */
-
-.coluna-xat-lateral{
-
-    width:620px;
-    height:100%;
-
-    background:#161616;
-
-    border-left:1px solid #262626;
-
-    display:flex;
-    flex-direction:column;
-
-    overflow:hidden;
-
-    transition:.35s ease;
-}
-
-/* ================= CHAT FECHADO ================= */
-
-.conteudo-iframes-wrapper.chat-oculto{
-
-    grid-template-columns:1fr 0px;
-}
-
-.conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
-
-    transform:translateX(100%);
-
-    opacity:0;
-}
-
-/* ================= HEADER CHAT ================= */
-
-.header-chat-titulo{
-
-    background:#111;
-
-    border-bottom:1px solid #262626;
-
-    padding:14px;
-
-    text-align:center;
-
-    color:#cca353;
-
-    font-size:13px;
-    font-weight:bold;
-
-    letter-spacing:.5px;
-}
-
-/* ================= IFRAME CHAT ================= */
-
-.container-iframe-xat{
-    flex:1;
-}
-
-.container-iframe-xat iframe{
-
-    width:100%;
-    height:100%;
-
-    border:none;
-
-    display:block;
-}
-
 /* ================= MOBILE ================= */
 
 @media(max-width:900px){
@@ -397,7 +397,7 @@ header{
         font-size:16px;
     }
 
-    /* etiqueta mobile */
+    /* ================= ETIQUETA MOBILE ================= */
 
     .etiqueta-chat{
 
@@ -420,22 +420,24 @@ header{
         border-top:none;
 
         justify-content:center;
+
+        z-index:9999;
     }
 
-    /* layout */
+    /* ================= LAYOUT ================= */
 
     .conteudo-iframes-wrapper{
 
         width:100%;
 
+        height:calc(100vh - 102px);
+
         display:flex;
 
         flex-direction:column;
-
-        height:calc(100vh - 102px);
     }
 
-    /* chat */
+    /* ================= CHAT ================= */
 
     .coluna-xat-lateral{
 
@@ -465,7 +467,7 @@ header{
         flex-shrink:0;
     }
 
-    /* api */
+    /* ================= API ================= */
 
     .coluna-api-principal{
 
@@ -478,7 +480,7 @@ header{
         height:100%;
     }
 
-    /* fechado */
+    /* ================= FECHADO ================= */
 
     .conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
 
@@ -489,6 +491,18 @@ header{
         opacity:0;
 
         border-bottom:none;
+    }
+
+}
+
+/* remove movimento lateral no mobile */
+
+@media(max-width:900px){
+
+    .conteudo-iframes-wrapper:not(.chat-oculto)
+    ~ .etiqueta-chat{
+
+        right:0 !important;
     }
 }
 
@@ -556,6 +570,16 @@ header{
 
 </header>
 
+<!-- ================= ETIQUETA ================= -->
+
+<div
+    class="etiqueta-chat"
+    id="etiqueta-chat"
+    onclick="alternarLayoutChat()"
+>
+    Abrir Chat
+</div>
+
 <!-- ================= CONTEÚDO ================= -->
 
 <div
@@ -563,22 +587,7 @@ header{
     id="layout-container-global"
 >
 
-    <!-- API -->
-
-    <div class="coluna-api-principal">
-
-        <div class="iframe-api-container">
-
-            <iframe
-                src="https://api.oreidasurebet.com"
-                allowtransparency="true"
-            ></iframe>
-
-        </div>
-
-    </div>
-
-    <!-- CHAT -->
+    <!-- ================= CHAT ================= -->
 
     <div class="coluna-xat-lateral">
 
@@ -598,16 +607,21 @@ header{
 
     </div>
 
-</div>
+    <!-- ================= API ================= -->
 
-<!-- ================= ETIQUETA ================= -->
+    <div class="coluna-api-principal">
 
-<div
-    class="etiqueta-chat"
-    id="etiqueta-chat"
-    onclick="alternarLayoutChat()"
->
-    Abrir Chat
+        <div class="iframe-api-container">
+
+            <iframe
+                src="https://api.oreidasurebet.com"
+                allowtransparency="true"
+            ></iframe>
+
+        </div>
+
+    </div>
+
 </div>
 
 <!-- ================= SCRIPT ================= -->
