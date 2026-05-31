@@ -72,6 +72,8 @@ header{
     position:relative;
 
     z-index:10000;
+
+    flex-shrink:0;
 }
 
 /* ================= LOGO ================= */
@@ -161,6 +163,97 @@ header{
     color:#ffd700;
 }
 
+/* ================= ETIQUETA ================= */
+
+.etiqueta-chat{
+
+    position:absolute;
+
+    top:50%;
+
+    right:0;
+
+    transform:translateY(-50%);
+
+    width:42px;
+    height:170px;
+
+    background:#000;
+
+    border:1px solid #cca353;
+    border-right:none;
+
+    border-radius:12px 0 0 12px;
+
+    color:#cca353;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    writing-mode:vertical-rl;
+
+    font-size:13px;
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+    user-select:none;
+
+    z-index:99999;
+
+    box-shadow:
+        -4px 0 14px rgba(0,0,0,.35);
+}
+
+.etiqueta-chat:hover{
+
+    background:#111;
+
+    color:#ffd700;
+
+    border-color:#ffd700;
+
+    box-shadow:
+        -4px 0 18px rgba(204,163,83,.25);
+}
+
+/* ================= PULSE ================= */
+
+.etiqueta-chat::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    animation:pulseEtiqueta 2s infinite;
+
+    pointer-events:none;
+}
+
+@keyframes pulseEtiqueta{
+
+    0%{
+        box-shadow:0 0 0 0 rgba(204,163,83,.45);
+    }
+
+    70%{
+        box-shadow:0 0 0 12px rgba(204,163,83,0);
+    }
+
+    100%{
+        box-shadow:0 0 0 0 rgba(204,163,83,0);
+    }
+}
+
 /* ================= CONTEÚDO ================= */
 
 .conteudo-iframes-wrapper{
@@ -216,9 +309,9 @@ header{
     display:flex;
     flex-direction:column;
 
-    transition:.35s ease;
-
     overflow:hidden;
+
+    transition:.35s ease;
 }
 
 /* ================= CHAT FECHADO ================= */
@@ -235,7 +328,7 @@ header{
     opacity:0;
 }
 
-/* ================= TÍTULO CHAT ================= */
+/* ================= HEADER CHAT ================= */
 
 .header-chat-titulo{
 
@@ -255,6 +348,8 @@ header{
     letter-spacing:.5px;
 }
 
+/* ================= IFRAME CHAT ================= */
+
 .container-iframe-xat{
     flex:1;
 }
@@ -269,97 +364,6 @@ header{
     display:block;
 }
 
-/* ================= ETIQUETA ================= */
-
-.etiqueta-chat{
-
-    position:absolute;
-
-    top:50%;
-
-    right:0;
-
-    transform:translateY(-50%);
-
-    width:42px;
-    height:170px;
-
-    background:#000;
-
-    border:1px solid #cca353;
-    border-right:none;
-
-    border-radius:12px 0 0 12px;
-
-    color:#cca353;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    writing-mode:vertical-rl;
-
-    font-size:13px;
-    font-weight:bold;
-
-    letter-spacing:1px;
-
-    cursor:pointer;
-
-    transition:.25s ease;
-
-    user-select:none;
-
-    z-index:999999;
-
-    box-shadow:
-        -4px 0 14px rgba(0,0,0,.35);
-}
-
-.etiqueta-chat:hover{
-
-    background:#111;
-
-    color:#ffd700;
-
-    border-color:#ffd700;
-
-    box-shadow:
-        -4px 0 18px rgba(204,163,83,.25);
-}
-
-/* ================= PULSE ================= */
-
-.etiqueta-chat::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    border-radius:inherit;
-
-    animation:pulseEtiqueta 2s infinite;
-
-    pointer-events:none;
-}
-
-@keyframes pulseEtiqueta{
-
-    0%{
-        box-shadow:0 0 0 0 rgba(204,163,83,.45);
-    }
-
-    70%{
-        box-shadow:0 0 0 12px rgba(204,163,83,0);
-    }
-
-    100%{
-        box-shadow:0 0 0 0 rgba(204,163,83,0);
-    }
-}
-
 /* ================= MOBILE ================= */
 
 @media(max-width:900px){
@@ -371,6 +375,7 @@ header{
 
     header{
         padding:0 10px;
+        flex-shrink:0;
     }
 
     .logo img{
@@ -381,22 +386,7 @@ header{
         font-size:16px;
     }
 
-    /* espaço reservado */
-
-    .conteudo-iframes-wrapper{
-
-        width:100%;
-
-        margin-right:0;
-
-        display:flex;
-
-        flex-direction:column;
-
-        height:calc(100vh - 102px);
-    }
-
-    /* etiqueta */
+    /* ================= ETIQUETA ================= */
 
     .etiqueta-chat{
 
@@ -416,26 +406,72 @@ header{
 
         border-left:none;
         border-right:none;
-
         border-top:none;
 
         justify-content:center;
+
+        flex-shrink:0;
     }
 
-    /* chat */
+    /* ================= LAYOUT ================= */
+
+    .conteudo-iframes-wrapper{
+
+        width:100%;
+
+        margin-right:0;
+
+        display:flex;
+
+        flex-direction:column;
+
+        height:calc(100vh - 102px);
+    }
+
+    /* ================= CHAT ================= */
 
     .coluna-xat-lateral{
+
+        order:1;
 
         width:100%;
 
         height:380px;
 
+        min-height:380px;
+
         border-left:none;
 
         border-bottom:1px solid #262626;
+
+        transition:
+            height .35s ease,
+            min-height .35s ease,
+            opacity .25s ease;
+
+        opacity:1;
+
+        transform:none;
+
+        overflow:hidden;
+
+        flex-shrink:0;
     }
 
-    /* fechado */
+    /* ================= API ================= */
+
+    .coluna-api-principal{
+
+        order:2;
+
+        flex:1;
+
+        min-height:0;
+
+        height:100%;
+    }
+
+    /* ================= FECHADO ================= */
 
     .conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
 
@@ -445,16 +481,7 @@ header{
 
         opacity:0;
 
-        transform:translateY(-100%);
-    }
-
-    /* api */
-
-    .coluna-api-principal{
-
-        flex:1;
-
-        height:100%;
+        border-bottom:none;
     }
 }
 
@@ -539,7 +566,7 @@ header{
     id="layout-container-global"
 >
 
-    <!-- API -->
+    <!-- ================= API ================= -->
 
     <div class="coluna-api-principal">
 
@@ -554,7 +581,7 @@ header{
 
     </div>
 
-    <!-- CHAT -->
+    <!-- ================= CHAT ================= -->
 
     <div class="coluna-xat-lateral">
 
