@@ -145,112 +145,7 @@ header{
     color:#ffd700;
 }
 
-/* ================= LAYOUT ================= */
-
-.conteudo-iframes-wrapper{
-
-    width:100%;
-
-    height:calc(100vh - 68px);
-
-    display:grid;
-
-    grid-template-columns:1fr 620px;
-
-    transition:grid-template-columns .35s ease;
-}
-
-/* ================= API ================= */
-
-.coluna-api-principal{
-
-    width:100%;
-    height:100%;
-}
-
-.iframe-api-container{
-
-    width:100%;
-    height:100%;
-}
-
-.iframe-api-container iframe{
-
-    width:100%;
-    height:100%;
-
-    border:none;
-
-    display:block;
-}
-
-/* ================= CHAT ================= */
-
-.coluna-xat-lateral{
-
-    width:620px;
-
-    height:100%;
-
-    background:#161616;
-
-    border-left:1px solid #262626;
-
-    display:flex;
-    flex-direction:column;
-
-    overflow:hidden;
-
-    transition:.35s ease;
-}
-
-/* ================= FECHADO ================= */
-
-.conteudo-iframes-wrapper.chat-oculto{
-
-    grid-template-columns:1fr 0px;
-}
-
-.conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
-
-    opacity:0;
-
-    transform:translateX(100%);
-}
-
-/* ================= TOPO CHAT ================= */
-
-.header-chat-titulo{
-
-    background:#111;
-
-    border-bottom:1px solid #262626;
-
-    padding:14px;
-
-    text-align:center;
-
-    color:#cca353;
-
-    font-size:13px;
-    font-weight:bold;
-}
-
-/* ================= IFRAME CHAT ================= */
-
-.container-iframe-xat{
-    flex:1;
-}
-
-.container-iframe-xat iframe{
-
-    width:100%;
-    height:100%;
-
-    border:none;
-}
-
-/* ================= ETIQUETA ================= */
+/* ================= BOTÃO FLUTUANTE ================= */
 
 .etiqueta-chat{
 
@@ -301,9 +196,9 @@ header{
         -4px 0 14px rgba(0,0,0,.35);
 }
 
-/* acompanha o painel */
+/* botão acompanha o chat */
 
-.conteudo-iframes-wrapper:not(.chat-oculto)
+.chat-aberto
 ~ .etiqueta-chat{
 
     right:620px;
@@ -334,7 +229,7 @@ header{
 @keyframes pulse{
 
     0%{
-        box-shadow:0 0 0 0 rgba(204,163,83,.4);
+        box-shadow:0 0 0 0 rgba(204,163,83,.35);
     }
 
     70%{
@@ -344,6 +239,105 @@ header{
     100%{
         box-shadow:0 0 0 0 rgba(204,163,83,0);
     }
+}
+
+/* ================= LAYOUT ================= */
+
+.conteudo-geral{
+
+    width:100%;
+
+    height:calc(100vh - 68px);
+
+    display:flex;
+
+    flex-direction:row;
+
+    overflow:hidden;
+}
+
+/* ================= API ================= */
+
+.coluna-api{
+
+    flex:1;
+
+    height:100%;
+
+    transition:.35s ease;
+}
+
+.coluna-api iframe{
+
+    width:100%;
+    height:100%;
+
+    border:none;
+
+    display:block;
+}
+
+/* ================= CHAT ================= */
+
+.coluna-chat{
+
+    width:0;
+
+    opacity:0;
+
+    overflow:hidden;
+
+    background:#161616;
+
+    border-left:1px solid #262626;
+
+    transition:
+        width .35s ease,
+        opacity .25s ease;
+}
+
+/* aberto */
+
+.chat-aberto .coluna-chat{
+
+    width:620px;
+
+    opacity:1;
+}
+
+/* ================= TOPO CHAT ================= */
+
+.header-chat{
+
+    background:#111;
+
+    border-bottom:1px solid #262626;
+
+    padding:14px;
+
+    text-align:center;
+
+    color:#cca353;
+
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* ================= IFRAME CHAT ================= */
+
+.chat-iframe{
+
+    width:100%;
+
+    height:calc(100% - 48px);
+}
+
+.chat-iframe iframe{
+
+    width:100%;
+    height:100%;
+
+    border:none;
 }
 
 /* ================= MOBILE ================= */
@@ -363,7 +357,7 @@ header{
         height:34px;
     }
 
-    /* botão mobile */
+    /* ================= BOTÃO MOBILE ================= */
 
     .etiqueta-chat{
 
@@ -375,7 +369,7 @@ header{
         transform:none;
 
         width:100%;
-        height:44px;
+        height:46px;
 
         writing-mode:initial;
 
@@ -391,68 +385,57 @@ header{
         border-bottom:
             2px solid #cca353;
 
-        font-size:14px;
-
-        letter-spacing:.5px;
-
         justify-content:center;
+
+        font-size:14px;
     }
 
-    /* layout */
+    /* ================= LAYOUT ================= */
 
-    .conteudo-iframes-wrapper{
-
-        display:flex;
+    .conteudo-geral{
 
         flex-direction:column;
 
-        height:calc(100vh - 112px);
+        height:calc(100vh - 114px);
     }
 
-    /* chat */
+    /* ================= CHAT ================= */
 
-    .coluna-xat-lateral{
+    .coluna-chat{
 
         width:100%;
 
-        height:380px;
+        height:0;
 
-        min-height:380px;
+        opacity:0;
 
         border-left:none;
 
         border-bottom:1px solid #262626;
 
-        transform:none !important;
-
-        opacity:1;
-
         transition:
             height .35s ease,
-            min-height .35s ease,
             opacity .25s ease;
     }
 
-    /* api */
+    /* aberto */
 
-    .coluna-api-principal{
+    .chat-aberto .coluna-chat{
+
+        width:100%;
+
+        height:380px;
+
+        opacity:1;
+    }
+
+    /* ================= API ================= */
+
+    .coluna-api{
 
         flex:1;
 
         min-height:0;
-    }
-
-    /* fechado */
-
-    .conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
-
-        height:0;
-
-        min-height:0;
-
-        opacity:0;
-
-        border-bottom:none;
     }
 }
 
@@ -521,7 +504,7 @@ header{
 <div
     class="etiqueta-chat"
     id="etiqueta-chat"
-    onclick="alternarLayoutChat()"
+    onclick="alternarChat()"
 >
     Abrir Chat
 </div>
@@ -529,33 +512,29 @@ header{
 <!-- ================= CONTEÚDO ================= -->
 
 <div
-    class="conteudo-iframes-wrapper chat-oculto"
-    id="layout-container-global"
+    class="conteudo-geral"
+    id="conteudo-geral"
 >
 
     <!-- API -->
 
-    <div class="coluna-api-principal">
+    <div class="coluna-api">
 
-        <div class="iframe-api-container">
-
-            <iframe
-                src="https://api.oreidasurebet.com"
-            ></iframe>
-
-        </div>
+        <iframe
+            src="https://api.oreidasurebet.com"
+        ></iframe>
 
     </div>
 
     <!-- CHAT -->
 
-    <div class="coluna-xat-lateral">
+    <div class="coluna-chat">
 
-        <div class="header-chat-titulo">
+        <div class="header-chat">
             Chat
         </div>
 
-        <div class="container-iframe-xat">
+        <div class="chat-iframe">
 
             <iframe
                 src="https://xat.com/embed/chat.php#id=220516405&gn=oreidasurebet"
@@ -572,35 +551,35 @@ header{
 
 <script>
 
-function alternarLayoutChat(){
+function alternarChat(){
 
-    const container =
+    const layout =
         document.getElementById(
-            'layout-container-global'
+            'conteudo-geral'
         );
 
-    const etiqueta =
+    const botao =
         document.getElementById(
             'etiqueta-chat'
         );
 
-    container.classList.toggle(
-        'chat-oculto'
+    layout.classList.toggle(
+        'chat-aberto'
     );
 
     if(
-        container.classList.contains(
-            'chat-oculto'
+        layout.classList.contains(
+            'chat-aberto'
         )
     ){
 
-        etiqueta.innerText =
-            'Abrir Chat';
+        botao.innerText =
+            'Fechar Chat';
 
     }else{
 
-        etiqueta.innerText =
-            'Fechar Chat';
+        botao.innerText =
+            'Abrir Chat';
     }
 }
 
