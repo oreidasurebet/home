@@ -168,21 +168,7 @@ header{
 
     grid-template-columns:1fr 620px;
 
-    transition:
-        grid-template-columns .3s cubic-bezier(.25,.8,.25,1);
-}
-
-/* ================= CHAT FECHADO ================= */
-
-.conteudo-iframes-wrapper.chat-oculto{
-    grid-template-columns:1fr 0px;
-}
-
-.conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
-
-    visibility:hidden;
-
-    overflow:hidden;
+    transition:grid-template-columns .35s ease;
 }
 
 /* ================= API ================= */
@@ -213,7 +199,7 @@ header{
 
 .coluna-xat-lateral{
 
-    width:100%;
+    width:620px;
     height:100%;
 
     background:#161616;
@@ -222,7 +208,29 @@ header{
 
     display:flex;
     flex-direction:column;
+
+    position:relative;
+
+    transition:.35s ease;
 }
+
+/* CHAT FECHADO */
+
+.conteudo-iframes-wrapper.chat-oculto{
+
+    grid-template-columns:1fr 0px;
+}
+
+.conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
+
+    transform:translateX(100%);
+
+    opacity:0;
+
+    overflow:hidden;
+}
+
+/* ================= TÍTULO CHAT ================= */
 
 .header-chat-titulo{
 
@@ -256,96 +264,75 @@ header{
     display:block;
 }
 
-/* ================= BOTÃO FLUTUANTE ================= */
+/* ================= ETIQUETA LATERAL ================= */
 
-#btn-toggle-chat-flutuante{
+.etiqueta-chat{
 
-    position:fixed;
+    position:absolute;
 
-    left:18px;
-    bottom:18px;
+    top:50%;
 
-    width:58px;
-    height:58px;
+    left:-42px;
 
-    border:none;
+    transform:translateY(-50%);
 
-    border-radius:50%;
+    width:42px;
+    height:160px;
 
-    background:
-        linear-gradient(
-            145deg,
-            #cca353,
-            #e0b96b
-        );
+    background:#000;
 
-    color:#111;
+    border:
+        1px solid #cca353;
 
-    font-size:28px;
+    border-right:none;
 
-    cursor:pointer;
+    border-radius:
+        12px 0 0 12px;
 
-    z-index:999999;
+    color:#cca353;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
+    writing-mode:vertical-rl;
+
+    transform-origin:center;
+
+    font-size:13px;
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+    user-select:none;
+
+    z-index:99999;
+}
+
+.etiqueta-chat:hover{
+
+    background:#111;
+
+    color:#ffd700;
+
+    border-color:#ffd700;
+
     box-shadow:
-        0 6px 20px rgba(0,0,0,.45),
-        0 0 18px rgba(204,163,83,.35);
-
-    transition:all .25s ease;
-
-    animation:pulseFloatingChat 2s infinite;
-}
-
-#btn-toggle-chat-flutuante:hover{
-
-    transform:scale(1.08);
-
-    box-shadow:
-        0 10px 28px rgba(0,0,0,.55),
-        0 0 25px rgba(255,215,0,.45);
-}
-
-/* ================= CHAT ABERTO ================= */
-
-#btn-toggle-chat-flutuante.chat-aberto{
-
-    animation:none;
-
-    background:#a12626;
-
-    color:#fff;
-}
-
-/* ================= PULSE ================= */
-
-@keyframes pulseFloatingChat{
-
-    0%{
-
-        box-shadow:
-            0 0 0 0 rgba(204,163,83,.55);
-    }
-
-    70%{
-
-        box-shadow:
-            0 0 0 16px rgba(204,163,83,0);
-    }
-
-    100%{
-
-        box-shadow:
-            0 0 0 0 rgba(204,163,83,0);
-    }
+        -4px 0 15px rgba(204,163,83,.25);
 }
 
 /* ================= MOBILE ================= */
 
 @media(max-width:900px){
+
+    html,
+    body{
+        overflow:hidden;
+    }
 
     header{
         padding:0 10px;
@@ -359,53 +346,78 @@ header{
         font-size:16px;
     }
 
+    /* layout mobile */
+
     .conteudo-iframes-wrapper{
 
         display:flex;
 
         flex-direction:column;
+
+        height:calc(100vh - 68px);
     }
+
+    /* CHAT */
 
     .coluna-xat-lateral{
 
-        order:1;
+        width:100%;
 
-        width:100% !important;
-
-        height:400px;
+        height:380px;
 
         border-left:none;
 
         border-bottom:1px solid #262626;
+
+        transition:.35s ease;
     }
+
+    /* CHAT FECHADO */
+
+    .conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
+
+        height:0;
+
+        min-height:0;
+
+        opacity:0;
+
+        transform:translateY(-100%);
+    }
+
+    /* API */
 
     .coluna-api-principal{
 
-        order:2;
-
         flex:1;
-    }
 
-    .conteudo-iframes-wrapper.chat-oculto .coluna-xat-lateral{
-        display:none;
-    }
-
-    .conteudo-iframes-wrapper.chat-oculto .coluna-api-principal{
         height:100%;
     }
 
-    /* botão mobile */
+    /* ETIQUETA MOBILE */
 
-    #btn-toggle-chat-flutuante{
+    .etiqueta-chat{
 
-        width:54px;
-        height:54px;
+        top:100%;
 
-        font-size:24px;
+        left:50%;
 
-        left:14px;
-        bottom:14px;
+        transform:translateX(-50%);
+
+        width:140px;
+        height:34px;
+
+        writing-mode:initial;
+
+        border-radius:
+            0 0 12px 12px;
+
+        border-right:
+            1px solid #cca353;
+
+        border-top:none;
     }
+
 }
 
 </style>
@@ -497,9 +509,23 @@ header{
 
     <div class="coluna-xat-lateral">
 
+        <!-- ETIQUETA -->
+
+        <div
+            class="etiqueta-chat"
+            id="etiqueta-chat"
+            onclick="alternarLayoutChat()"
+        >
+            Abrir Chat
+        </div>
+
+        <!-- TÍTULO -->
+
         <div class="header-chat-titulo">
             Chat
         </div>
+
+        <!-- IFRAME -->
 
         <div class="container-iframe-xat">
 
@@ -515,16 +541,6 @@ header{
 
 </div>
 
-<!-- ================= BOTÃO FLUTUANTE ================= -->
-
-<button
-    id="btn-toggle-chat-flutuante"
-    onclick="alternarLayoutChat()"
-    title="Abrir Chat"
->
-    💬
-</button>
-
 <!-- ================= SCRIPT ================= -->
 
 <script>
@@ -536,28 +552,26 @@ function alternarLayoutChat(){
             'layout-container-global'
         );
 
-    const btnChat =
+    const etiqueta =
         document.getElementById(
-            'btn-toggle-chat-flutuante'
+            'etiqueta-chat'
         );
 
     container.classList.toggle('chat-oculto');
 
-    if(container.classList.contains('chat-oculto')){
+    if(
+        container.classList.contains(
+            'chat-oculto'
+        )
+    ){
 
-        btnChat.innerHTML = '💬';
-
-        btnChat.classList.remove('chat-aberto');
-
-        btnChat.title = 'Abrir Chat';
+        etiqueta.innerText =
+            'Abrir Chat';
 
     }else{
 
-        btnChat.innerHTML = '✖';
-
-        btnChat.classList.add('chat-aberto');
-
-        btnChat.title = 'Fechar Chat';
+        etiqueta.innerText =
+            'Fechar Chat';
     }
 }
 
