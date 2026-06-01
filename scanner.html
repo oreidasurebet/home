@@ -145,13 +145,13 @@ header{
     color:#ffd700;
 }
 
-/* ================= BOTÃO CHAT DESKTOP ================= */
+/* ================= BOTÃO CHAT DESKTOP (MELHORADO E DESGRUDADO DO HEADER) ================= */
 
 .etiqueta-chat{
 
     position:fixed;
 
-    top:50%;
+    top:calc(50% + 34px); /* Centraliza perfeitamente considerando a área útil abaixo do header */
 
     right:0;
 
@@ -160,15 +160,13 @@ header{
     width:44px;
     height:180px;
 
-    background:#000;
+    background:#111; /* Cor um pouco mais clara que o fundo para dar destaque */
 
-    border:
-        1px solid #cca353;
+    border:1px solid #cca353;
 
     border-right:none;
 
-    border-radius:
-        12px 0 0 12px;
+    border-radius:12px 0 0 12px;
 
     color:#cca353;
 
@@ -192,11 +190,10 @@ header{
         background .25s ease,
         color .25s ease;
 
-    box-shadow:
-        -4px 0 14px rgba(0,0,0,.35);
+    box-shadow: -5px 0 20px rgba(0,0,0,0.8); /* Sombra mais forte para desgrudar do conteúdo */
 }
 
-/* acompanha o xat */
+/* acompanha o xat no desktop */
 
 .chat-aberto .etiqueta-chat{
 
@@ -205,9 +202,10 @@ header{
 
 .etiqueta-chat:hover{
 
-    background:#111;
+    background:#1a1a1a;
 
     color:#ffd700;
+    border-color: #ffd700;
 }
 
 /* pulse */
@@ -278,12 +276,12 @@ header{
     display:block;
 }
 
-/* ================= CHAT DESKTOP (ALTURA CORRIGIDA) ================= */
+/* ================= CHAT DESKTOP ================= */
 
 .coluna-chat{
 
     width:0;
-    height:100%; /* Garante altura máxima vertical */
+    height:100%; 
 
     opacity:0;
 
@@ -334,7 +332,7 @@ header{
 .chat-iframe{
 
     width:100%;
-    flex: 1; /* Faz o iframe usar 100% da altura restante interna */
+    flex: 1; 
 }
 
 .chat-iframe iframe{
@@ -367,7 +365,7 @@ header{
         padding-right: 0;
     }
 
-    /* ================= BOTÃO MOBILE ================= */
+    /* ================= BOTÃO MOBILE (DESCOMPACTADO DO HEADER) ================= */
 
     .etiqueta-chat{
 
@@ -379,7 +377,7 @@ header{
         transform:none;
 
         width:100%;
-        height:46px;
+        height:48px;
 
         writing-mode:initial;
 
@@ -392,14 +390,14 @@ header{
 
         background:#111;
 
-        border-bottom:
-            2px solid #cca353;
+        border-bottom:2px solid #cca353;
 
         justify-content:center;
 
         font-size:14px;
 
         z-index:9999;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     }
 
     /* ================= LAYOUT MOBILE ================= */
@@ -413,37 +411,31 @@ header{
         height:calc(100vh - 114px);
     }
 
-    /* ================= CHAT MOBILE ================= */
+    /* ================= CHAT MOBILE CORRIGIDO (DISPLAY DINÂMICO PARA FORÇAR RENDERIZAÇÃO) ================= */
 
     .coluna-chat{
 
         width:100%;
-
-        height:0;
-
+        height: 0;
         opacity:0;
 
+        display: none; /* Inicia completamente removido para não travar o iframe */
+        flex-direction: column;
         overflow:hidden;
 
         border-left:none;
-
         border-bottom:1px solid #262626;
 
-        transition:
-            height .35s ease,
-            opacity .25s ease;
-
+        transition: opacity .25s ease;
         order:1; 
     }
 
-    /* aberto */
+    /* aberto no mobile */
 
     .chat-aberto .coluna-chat{
-
+        display: flex; /* Força o navegador a recalcular o espaço do iframe */
         width:100%;
-
         height:380px;
-
         opacity:1;
     }
 
