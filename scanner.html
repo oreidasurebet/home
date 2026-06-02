@@ -145,7 +145,7 @@ header{
     color:#ffd700;
 }
 
-/* ================= BOTÃO CHAT DESKTOP (MELHORADO E DESGRUDADO DO HEADER) ================= */
+/* ================= BOTÃO CHAT DESKTOP ================= */
 
 .etiqueta-chat{
 
@@ -160,7 +160,7 @@ header{
     width:44px;
     height:180px;
 
-    background:#111; /* Cor um pouco mais clara que o fundo para dar destaque */
+    background:#111; 
 
     border:1px solid #cca353;
 
@@ -190,7 +190,7 @@ header{
         background .25s ease,
         color .25s ease;
 
-    box-shadow: -5px 0 20px rgba(0,0,0,0.8); /* Sombra mais forte para desgrudar do conteúdo */
+    box-shadow: -5px 0 20px rgba(0,0,0,0.8); 
 }
 
 /* acompanha o xat no desktop */
@@ -365,7 +365,7 @@ header{
         padding-right: 0;
     }
 
-    /* ================= BOTÃO MOBILE (DESCOMPACTADO DO HEADER) ================= */
+    /* ================= BOTÃO MOBILE ================= */
 
     .etiqueta-chat{
 
@@ -411,7 +411,7 @@ header{
         height:calc(100vh - 114px);
     }
 
-    /* ================= CHAT MOBILE CORRIGIDO (DISPLAY DINÂMICO PARA FORÇAR RENDERIZAÇÃO) ================= */
+    /* ================= CHAT MOBILE CORRIGIDO ================= */
 
     .coluna-chat{
 
@@ -419,7 +419,7 @@ header{
         height: 0;
         opacity:0;
 
-        display: none; /* Inicia completamente removido para não travar o iframe */
+        display: none; 
         flex-direction: column;
         overflow:hidden;
 
@@ -433,7 +433,7 @@ header{
     /* aberto no mobile */
 
     .chat-aberto .coluna-chat{
-        display: flex; /* Força o navegador a recalcular o espaço do iframe */
+        display: flex; 
         width:100%;
         height:380px;
         opacity:1;
@@ -539,9 +539,11 @@ header{
 
         <div class="chat-iframe">
 
+            <!-- Link atualizado com ?p=5 e permissões modernas ativadas -->
             <iframe
-                src="https://xat.com/oreidasurebet"
+                src="https://xat.com/oreidasurebet?p=5"
                 scrolling="no"
+                allow="autoplay; clipboard-write; geolocation"
             ></iframe>
 
         </div>
