@@ -308,7 +308,7 @@ header{
     opacity:1;
 }
 
-/* ================= IFRAME CHAT EM MODO PREMIUM (BORDA DOURADA 3PX AO ABRIR) ================= */
+/* ================= IFRAME CHAT EM MODO EFEITO GLOW (DISCRETO E ELEGANTE) ================= */
 
 .chat-iframe{
 
@@ -316,17 +316,18 @@ header{
     flex: 1; 
     display: flex;
     flex-direction: column;
-    padding: 10px; /* Cria um pequeno espaçamento interno para a borda brilhar e não colar nos cantos */
+    padding: 15px; /* Espaço para que o sombreado suave se espalhe sem cortar nas bordas */
     background: #0d0d0d;
 }
 
-/* Aplica a borda dourada mais grossa de 3px diretamente no elemento injetado do Chatango */
+/* Removido o border solid e injetado o Box Shadow esfumaçado */
 .chat-iframe * {
     width: 100% !important;
     height: 100% !important;
-    border: 3px solid #cca353 !important; /* Borda dourada de 3px */
+    border: none !important; /* Sem borda rígida */
     border-radius: 8px !important;
-    box-shadow: 0 4px 20px rgba(204, 163, 83, 0.15) !important; /* Brilho dourado de fundo */
+    /* Sombra projetada discreta (-8px para espalhar para esquerda) combinada com um leve brilho dourado */
+    box-shadow: -8px 0 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(204, 163, 83, 0.25) !important;
 }
 
 /* ================= MOBILE ================= */
@@ -520,7 +521,6 @@ header{
 
         <div class="chat-iframe">
 
-            <!-- CONFIGURAÇÃO DO CHATANGO REESTILIZADA COM FUNDO PRETO E DETALHES DOURADOS -->
             <script id="cid0020000441480225045" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 100%;height: 100%;">
                 {"handle":"reidasurebet","arch":"js","styles":{"a":"0d0d0d","b":100,"c":"cca353","d":"cca353","k":"cca353","l":"161616","m":"161616","n":"FFFFFF","p":"10","q":"cca353","r":100}}
             </script>
