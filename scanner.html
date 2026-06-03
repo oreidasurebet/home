@@ -327,21 +327,19 @@ header{
     flex-shrink: 0;
 }
 
-/* ================= IFRAME CHAT ================= */
+/* ================= IFRAME CHAT CORRIGIDO PARA CHATANGO ================= */
 
 .chat-iframe{
 
     width:100%;
     flex: 1; 
+    display: flex;
+    flex-direction: column;
 }
 
-.chat-iframe iframe{
-
-    width:100%;
-    height:100%;
-
-    border:none;
-    display: block;
+.chat-iframe * {
+    width: 100% !important;
+    height: 100% !important;
 }
 
 /* ================= MOBILE ================= */
@@ -539,32 +537,8 @@ header{
 
         <div class="chat-iframe">
 
-            <!-- SCRIPT CHATANGO CONFIGURADO PARA PREENCHIMENTO EXATO DO SEU CONTAINER -->
-            <script id="cid0020000441478080377" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 100%; height: 100%;">
-            {
-                "handle":"reidasurebet",
-                "arch":"js",
-                "styles":{
-                    "a":"000000",
-                    "b":100,
-                    "c":"FFFFFF",
-                    "d":"FFFFFF",
-                    "k":"000000",
-                    "l":"000000",
-                    "m":"000000",
-                    "n":"FFFFFF",
-                    "p":"10",
-                    "q":"000000",
-                    "r":100,
-                    "fwtickm":1,
-                    "pos":"cv",
-                    "cv":1,
-                    "cvf":0,
-                    "cvw":"100%",
-                    "cvh":"100%"
-                }
-            }
-            </script>
+            <!-- SEU SCRIPT ORIGINAL DO CHATANGO EXATAMENTE COMO ENVIADO -->
+            <script id="cid0020000441478080377" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 100%;height: 100%;">{"handle":"reidasurebet","arch":"js","styles":{"a":"000000","b":100,"c":"FFFFFF","d":"FFFFFF","k":"000000","l":"000000","m":"000000","n":"FFFFFF","p":"10","q":"000000","r":100,"fwtickm":1}}</script>
 
         </div>
 
