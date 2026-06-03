@@ -287,7 +287,7 @@ header{
 
     overflow:hidden;
 
-    background:#161616;
+    background:#0d0d0d; /* Ajustado para bater com o fundo principal do site */
 
     border-left:1px solid #262626;
 
@@ -308,12 +308,16 @@ header{
     opacity:1;
 }
 
-/* ================= IFRAME CHAT CORRIGIDO PARA MANTER USUÁRIO NA PÁGINA ================= */
+/* ================= IFRAME CHAT CORRIGIDO COM SHADOW DOURADO DISCRETO ================= */
 
 .chat-iframe{
 
     width:100%;
     flex: 1; 
+    display: flex;
+    flex-direction: column;
+    padding: 15px; /* Espaço nas bordas para o efeito de sombra se espalhar sem cortar */
+    background: #0d0d0d;
 }
 
 .chat-iframe iframe{
@@ -321,8 +325,12 @@ header{
     width:100%;
     height:100%;
 
-    border:none;
+    border: none !important; /* Remove qualquer linha de borda sólida */
+    border-radius: 8px;      /* Suaviza as pontas do iframe do chat */
     display: block;
+    
+    /* EFEITO GLOW DOURADO: Mescla uma sombra escura projetada com uma aura dourada suave e moderna */
+    box-shadow: -8px 0 25px rgba(0, 0, 0, 0.6), 0 0 18px rgba(204, 163, 83, 0.25) !important;
 }
 
 /* ================= MOBILE ================= */
@@ -516,7 +524,6 @@ header{
 
         <div class="chat-iframe">
 
-            <!-- CHAMADA EM IFRAME SEGURO: PRENDE O CHATANGO E EVITA REDIRECIONAMENTO NO CELULAR -->
             <iframe 
                 src="https://reidasurebet.chatango.com" 
                 scrolling="no"
