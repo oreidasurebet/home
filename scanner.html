@@ -308,19 +308,21 @@ header{
     opacity:1;
 }
 
-/* ================= IFRAME CHAT CORRIGIDO PARA CHATANGO ================= */
+/* ================= IFRAME CHAT CORRIGIDO PARA MANTER USUÁRIO NA PÁGINA ================= */
 
 .chat-iframe{
 
     width:100%;
     flex: 1; 
-    display: flex;
-    flex-direction: column;
 }
 
-.chat-iframe * {
-    width: 100% !important;
-    height: 100% !important;
+.chat-iframe iframe{
+
+    width:100%;
+    height:100%;
+
+    border:none;
+    display: block;
 }
 
 /* ================= MOBILE ================= */
@@ -390,7 +392,7 @@ header{
         height:calc(100vh - 114px);
     }
 
-    /* ================= CHAT MOBILE CORRIGIDO (DISPLAY DINÂMICO PARA FORÇAR RENDERIZAÇÃO) ================= */
+    /* ================= CHAT MOBILE CORRIGIDO ================= */
 
     .coluna-chat{
 
@@ -398,7 +400,7 @@ header{
         height: 0;
         opacity:0;
 
-        display: none; /* Inicia completamente removido para não travar o iframe */
+        display: none; 
         flex-direction: column;
         overflow:hidden;
 
@@ -412,7 +414,7 @@ header{
     /* aberto no mobile */
 
     .chat-aberto .coluna-chat{
-        display: flex; /* Força o navegador a recalcular o espaço do iframe */
+        display: flex; 
         width:100%;
         height:380px;
         opacity:1;
@@ -512,12 +514,13 @@ header{
 
     <div class="coluna-chat">
 
-        <!-- HEADER CHAT REMOVIDO DAQUI PARA GANHAR MAIS ESPAÇO PARA CIMA -->
-
         <div class="chat-iframe">
 
-            <!-- SEU SCRIPT DO CHATANGO COM TICKER DESATIVADO -->
-            <script id="cid0020000441480225045" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 100%;height: 100%;">{"handle":"reidasurebet","arch":"js","styles":{"a":"000000","b":100,"c":"FFFFFF","d":"FFFFFF","k":"000000","l":"000000","m":"000000","n":"FFFFFF","p":"10","q":"000000","r":100}}</script>
+            <!-- CHAMADA EM IFRAME SEGURO: PRENDE O CHATANGO E EVITA REDIRECIONAMENTO NO CELULAR -->
+            <iframe 
+                src="https://reidasurebet.chatango.com" 
+                scrolling="no"
+            ></iframe>
 
         </div>
 
