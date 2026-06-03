@@ -448,6 +448,22 @@ header{
         order:2; 
     }
 
+    /* FORÇA O CHATANGO GENERATED BOX A SUMIR DO RODAPÉ E SÓ APARECER SE O CHAT FOR ABERTO */
+    body > div[id^="chatango"], 
+    body > iframe[id^="chatango"],
+    div[style*="position: fixed"][style*="bottom: 0"] {
+        display: none !important;
+    }
+
+    .chat-aberto div[style*="position: fixed"][style*="bottom: 0"],
+    .chat-aberto .chat-iframe div, 
+    .chat-aberto .chat-iframe iframe {
+        display: block !important;
+        position: relative !important;
+        bottom: auto !important;
+        right: auto !important;
+    }
+
 }
 
 </style>
